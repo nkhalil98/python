@@ -3,7 +3,7 @@
 ## Data Structures
 
 - Dynamic Array (List)
-- Hashmap (Dictionary)
+- Hash Map/Hash Table (Dictionary)
 - Singly Linked List
 - Doubly Linked List
 - Stack
