@@ -25,7 +25,7 @@ class Stack():
     def is_empty(self):
         return len(self.stk) == 0
 
-    def length(self):
+    def size(self):
         return len(self.stk)
 
 
@@ -49,5 +49,5 @@ class LStack():
     def is_empty(self):
         return len(self.stk) == 0
 
-    def length(self):
+    def size(self):
         return len(self.stk)
