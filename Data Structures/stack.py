@@ -30,7 +30,7 @@ class Stack():
 
 
 # stack implementation using lists
-class Stack():
+class LStack():
     def __init__(self):
         self.stk = []
     
