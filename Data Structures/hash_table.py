@@ -1,5 +1,5 @@
 # lookup by key is O(1) in the average case scenario but O(n) in the worst case scenario if the hash table uses a bad hash function that leads to a lot of collisions
-# we can handle collisions using techniques such as open addressing and linear probing
+# we can handle collisions using techniques such as open addressing, linear probing, and separate chaining
 # below is a basic hashmap implementaion that takes a string, an integer, or a float as valid keys and stores key-value pairs in a python list
 
 class HashTable():
