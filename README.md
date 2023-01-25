@@ -16,3 +16,9 @@
 ## Algorithms
 
 - Binary Search
+- Selection Sort
+- Bubble Sort
+- Insertion Sort
+- Shell Sort
+- Merge Sort 
+- Quick Sort 
