@@ -29,7 +29,7 @@ class SinglyLinkedList():
         ptr.next = node
 
     def insert(self, index, val):
-        if index < 0 or index >= self.length():
+        if index < 0 or index > self.length():
             raise IndexError()
 
         if index == 0:
