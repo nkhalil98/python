@@ -22,3 +22,5 @@
 - Shell Sort
 - Merge Sort 
 - Quick Sort 
+- Heap Sort
+- Radix Sort
