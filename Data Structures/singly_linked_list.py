@@ -11,6 +11,9 @@ class Node():
 class SinglyLinkedList():
     def __init__(self):
         self.head = None
+        
+    def get_head_node(self):
+        return self.head
 
     def insert_at_beginning(self, val):
         node = Node(val, self.head)
