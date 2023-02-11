@@ -14,7 +14,7 @@ class Node():
     def get_val(self):
         return self.val
 
-class Stack:
+class Stack():
     def __init__(self, max_size=1000):
         self.top_item = None
         self.size = 0
