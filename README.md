@@ -10,6 +10,8 @@
 - Queue
 - Tree
 - Binary Tree and Binary Search Tree
+- Min-Heap
+- Max-Heap
 - Graph
 
 
