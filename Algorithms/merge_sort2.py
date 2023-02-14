@@ -13,20 +13,20 @@ def merge_sort(items):
     return merge(left_sorted, right_sorted)
 
 def merge(left, right):
-    result = []
+    merged = []
 
     while (left and right):
         if left[0] < right[0]:
-            result.append(left[0])
+            merged.append(left[0])
             left.pop(0)
         else:
-            result.append(right[0])
+            merged.append(right[0])
             right.pop(0)
 
     if left:
-        result += left
+        merged += left
 
     if right:
-        result += right
+        merged += right
 
-    return result
+    return merged
