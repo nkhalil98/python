@@ -1,6 +1,6 @@
 # bubble sort has a worst-case time complexity of O(n^2)
 # bubble sort has a space complexity of O(1)
-# bubble sort has a best-case time complexity of O(n)
+# bubble sort has a best-case time complexity of Ω(n)
 
 def bubble_sort(arr):
     n = len(arr)
