@@ -23,6 +23,6 @@
 - Insertion Sort
 - Shell Sort
 - Merge Sort 
-- Quick Sort 
-- Heap Sort
+- Quick Sort
 - Radix Sort
+- Heap Sort
