@@ -26,3 +26,7 @@
 - Quick Sort
 - Radix Sort
 - Heap Sort
+- Breadth-First Search
+- Depth-First Search
+- Dijkstra's Algorithm
+- A* Algorithm
