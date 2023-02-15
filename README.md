@@ -18,6 +18,7 @@
 ## Algorithms
 
 - Binary Search
+- Naive Pattern Search
 - Selection Sort
 - Bubble Sort
 - Insertion Sort
