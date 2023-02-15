@@ -54,14 +54,11 @@ class MaxHeap:
 
     def get_larger_child_idx(self, idx):
         if self.right_child_idx(idx) > self.count:
-            print("There is only a left child")
             return self.left_child_idx(idx)
         else:
             left_child = self.heap_list[self.left_child_idx(idx)]
             right_child = self.heap_list[self.right_child_idx(idx)]
             if left_child > right_child:
-                print("Left child "+ str(left_child) + " is larger than right child " + str(right_child))
                 return self.left_child_idx(idx)
             else:
-                print("Right child " + str(right_child) + " is larger than left child " + str(left_child))
                 return self.right_child_idx(idx)
