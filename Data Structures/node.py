@@ -1,3 +1,5 @@
+# nodes are the fundamental building blocks of linked lists, stacks, queues, trees, and more
+
 class Node():
     def __init__(self, val, next=None):
         self.val = val
