@@ -3,7 +3,7 @@
 # radix sort has a best-case time complexity of Ω(nk)
 
 
-# implementing a least-significant-digit implementation of radix sort
+# least-significant-digit implementation of radix sort
 def radix_sort(arr):
 	max_value = max(arr)
 	max_exponent = len(str(max_value))
