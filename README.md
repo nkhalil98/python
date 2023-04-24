@@ -4,6 +4,7 @@
 
 - Static Array
 - Dynamic Array (List)
+- Set
 - Hash Map/Hash Table (Dictionary)
 - Singly Linked List
 - Doubly Linked List
