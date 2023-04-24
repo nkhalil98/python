@@ -2,6 +2,7 @@
 
 ## Data Structures
 
+- Static Array
 - Dynamic Array (List)
 - Hash Map/Hash Table (Dictionary)
 - Singly Linked List
