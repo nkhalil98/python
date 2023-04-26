@@ -4,7 +4,7 @@ from tree import TreeNode
 def dfs(root: TreeNode, goal, path=()):
     path = path + (root,)  # Initial path
 
-    if root.value == goal:  # Base case
+    if root.val == goal:  # Base case
         return path
 
     for child in root.children:
