@@ -3,17 +3,17 @@
 ## Data Structures
 
 - Static Array
-- Dynamic Array (List)
+- Dynamic Array (Python list)
 - Singly Linked List
 - Doubly Linked List
 - Stack
 - Queue
 - Set
-- Hash Map/Hash Table (Dictionary)
+- Hash Map/Hash Table (Python dictionary)
 - Tree
 - Binary Tree and Binary Search Tree
 - Min-Heap
-- Max-Heap
+- Max-Heap (Python heapq)
 - Graph
 
 
