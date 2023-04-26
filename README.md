@@ -19,6 +19,7 @@
 
 ## Algorithms
 
+- Linear Search
 - Binary Search
 - Naive Pattern Search
 - Selection Sort
