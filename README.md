@@ -59,3 +59,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * [Real Python](https://realpython.com/)
 * [Codecademy](https://www.codecademy.com/learn/learn-python-3)
 * [Codecademy](https://www.codecademy.com/learn/learn-intermediate-python-3)
+* [Codecademy](https://www.codecademy.com/learn/learn-advanced-python)
