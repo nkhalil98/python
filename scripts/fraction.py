@@ -33,14 +33,16 @@ class Fraction:
 
     def reciprocal(self):
         return Fraction(self.denom, self.num)
-    
+
     def reduce(self):
         if self.denom == 1:
             return self.num
+
         def gcd(a, b):
             while b != 0:
-                b, a = a%b, b
+                b, a = a % b, b
             return a
+
         GCD = gcd(self.num, self.denom)
         new_num = self.num // GCD
         new_denom = self.denom // GCD
