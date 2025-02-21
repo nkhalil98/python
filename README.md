@@ -1,21 +1,15 @@
 # Python 🐍
 
-This repository contains Python scripts that I've written while learning Python. Each script is a representation of the concepts and skills I've learned throughout my learning journey.
+## Resources
 
-## Acknowledgments
-
-* [Python Documentation](https://docs.python.org/3/)
-* [Real Python](https://realpython.com/)
-* [Codecademy](https://www.codecademy.com/learn/learn-python-3)
-* [Codecademy](https://www.codecademy.com/learn/learn-intermediate-python-3)
-* [Codecademy](https://www.codecademy.com/learn/learn-advanced-python)
+* [Python Crash Course](https://nostarch.com/python-crash-course-3rd-edition)
 
 ## Data Structures and Algorithms
 
 ### Data Structures
 
-* Static Array
 * Dynamic Array (Python list)
+* Static Array
 * Singly Linked List
 * Doubly Linked List
 * Stack
