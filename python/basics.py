@@ -48,15 +48,10 @@ my_dict = {"name": "Nabil", "age": 26}  # key-value pairs
 name = my_dict["name"]  # access a value using a key
 my_dict["city"] = "Boston"  # add a new key-value pair
 
-
 ## set data types
 my_set = {1, 2, 3}  # set (unordered collection of unique items)
 frozen_set = frozenset({1, 2, 3, 4, 5})  # frozenset (immutable set)
 
-## binary data types
-my_bytes = bytes(10)  # bytes (immutable sequence of bytes)
-my_byte_array = bytearray(10)  # bytearray (mutable sequence of bytes)
-my_mem_view = memoryview(bytes(10))  # memoryview (memory view of a bytes object)
 
 ## type casting
 to_str = str(1)  # int to str
@@ -106,7 +101,7 @@ a in b  # True if a sequence with the specified value is present in the object
 
 
 # control flow
-# ------------
+# -----------
 
 ## conditional statements
 
@@ -181,7 +176,7 @@ while active:
     active = False
 
 
-# list comprehensions
+### list comprehensions
 nums = [1, 2, 3, 4, 5]
 squares = [x**2 for x in nums]
 
@@ -256,7 +251,6 @@ parse_id(id=0, name="Nabil", age=26)
 
 # file I/O
 # --------
-
 
 ## reading
 
@@ -349,6 +343,7 @@ except Exception as e:  # catch the exception object
 # -------
 
 
+## class definition
 class Person:
     def __init__(self, name, age):  # constructor (dunder/magic method)
         self.name = name  # instance variable/attribute
