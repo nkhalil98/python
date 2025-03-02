@@ -4,8 +4,9 @@ def quick_sort(arr, start, end):
         return
     if start < end:
         p_index = partition(arr, start, end)
-        quick_sort(arr, start, p_index-1)
-        quick_sort(arr, p_index+1, end)
+        quick_sort(arr, start, p_index - 1)
+        quick_sort(arr, p_index + 1, end)
+
 
 def partition(arr, start, end):
     pivot = arr[end]

@@ -5,16 +5,17 @@
 # shell sort has a space complexity of O(1)
 # shell sort has a best-case time complexity of Ω(nlog(n))
 
+
 def shell_sort(arr):
     n = len(arr)
-    gap = n//2
+    gap = n // 2
 
     while gap > 0:
         for i in range(gap, n):
             anchor = arr[i]
             j = i
-            while j >= gap and arr[j-gap] > anchor:
-                arr[j] = arr[j-gap]
+            while j >= gap and arr[j - gap] > anchor:
+                arr[j] = arr[j - gap]
                 j -= gap
             arr[j] = anchor
         gap //= 2

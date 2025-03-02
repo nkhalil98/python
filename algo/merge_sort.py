@@ -2,11 +2,12 @@
 # merge sort has a space complexity of O(n)
 # merge sort has a best-case time complexity of Ω(nlog(n))
 
+
 def merge_sort(arr):
     if len(arr) <= 1:
         return
 
-    mid = len(arr)//2
+    mid = len(arr) // 2
 
     left = arr[:mid]
     right = arr[mid:]
@@ -15,6 +16,7 @@ def merge_sort(arr):
     merge_sort(right)
 
     merge(left, right, arr)
+
 
 def merge(a, b, arr):
     n = len(a)

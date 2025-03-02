@@ -1,4 +1,7 @@
-# Bianry search is a searching algorithm that searches for an element in a sorted dataset in O(log(n)) time opposed to linear search that does it in O(n) time
+# Bianry search is a searching algorithm that searches for an element in a
+# sorted dataset in O(log(n)) time opposed to linear search that does it in O(n)
+# time
+
 
 def binary_search_iter(arr, e):
     left = 0
@@ -18,6 +21,7 @@ def binary_search_iter(arr, e):
             right = mid - 1
 
     return -1
+
 
 def binary_search_recur(arr, e, left, right):
     if right < left:

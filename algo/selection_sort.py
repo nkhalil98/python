@@ -2,11 +2,12 @@
 # selection sort has a space complexity of O(1)
 # selection sort has a best-case time complexity of Ω(n^2)
 
+
 def selection_sort(arr):
     n = len(arr)
-    for i in range(n-1):
+    for i in range(n - 1):
         min_index = i
-        for j in range(min_index+1, n):
+        for j in range(min_index + 1, n):
             if arr[j] < arr[min_index]:
                 min_index = j
         if i != min_index:
