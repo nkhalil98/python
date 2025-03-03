@@ -1,16 +1,20 @@
-class LinkedListNode:
-    def __init__(self, x):  # O(1)
-        self.item = x
-        self.next = None
+"""
+Linked List
+    - Singly Linked List
+    - Doubly Linked List
+"""
 
-    def later_node(self, i):  # O(i)
-        if i == 0:
-            return self
-        assert self.next
-        return self.next.later_node(i - 1)
+from __future__ import annotations
 
 
-class LinkedList:
+class Node:
+    def __init__(self, val=None, next=None, prev=None):  # O(1)
+        self.val = val
+        self.next = next
+        self.prev = prev
+
+
+class SinglyLinkedList:
     def __init__(self):  # O(1)
         self.head = None
         self.size = 0
@@ -21,54 +25,217 @@ class LinkedList:
     def __iter__(self):  # O(n)
         node = self.head
         while node:
-            yield node.item
+            yield node.val
             node = node.next
 
-    def build(self, X):  # O(n)
-        for a in reversed(X):
-            self.insert_first(a)
-
-    def get_at(self, i):  # O(i)
-        node = self.head.later_node(i)
-        return node.item
-
-    def set_at(self, i, x):  # O(i)
-        node = self.head.later_node(i)
-        node.item = x
-
-    def insert_first(self, x):  # O(1)
-        new_node = LinkedListNode(x)
-        new_node.next = self.head
-        self.head = new_node
+    def insert_at_beginning(self, val):  # O(1)
+        node = Node(val, self.head)
+        self.head = node
         self.size += 1
 
-    def delete_first(self):  # O(1)
-        x = self.head.item
-        self.head = self.head.next
-        self.size -= 1
-        return x
+    def insert_at_end(self, val):  # O(n)
+        node = Node(val)
+        ptr = self.head
 
-    def insert_at(self, i, x):  # O(i)
-        if i == 0:
-            self.insert_first(x)
+        if not ptr:
+            self.head = node
+            self.size += 1
             return
-        new_node = LinkedListNode(x)
-        node = self.head.later_node(i - 1)
-        new_node.next = node.next
-        node.next = new_node
+
+        while ptr.next:
+            ptr = ptr.next
+        ptr.next = node
         self.size += 1
 
-    def delete_at(self, i):  # O(i)
-        if i == 0:
-            return self.delete_first()
-        node = self.head.later_node(i - 1)
-        x = node.next.item
-        node.next = node.next.next
-        self.size -= 1
-        return x
+    def insert(self, index, val):  # O(n)
+        if index < 0 or index > len(self):
+            raise IndexError()
 
-    def insert_last(self, x):  # O(n)
-        self.insert_at(len(self), x)
+        if index == 0:
+            self.insert_at_beginning(val)
+            return
 
-    def delete_last(self):  # O(n)
-        return self.delete_at(len(self) - 1)
+        counter = 0
+        ptr = self.head
+
+        while ptr:
+            if counter == (index - 1):
+                node = Node(val, ptr.next)
+                ptr.next = node
+                self.size += 1
+                break
+            ptr = ptr.next
+            counter += 1
+
+    def remove(self, index):  # O(n)
+        if index < 0 or index >= len(self):
+            raise IndexError()
+
+        if index == 0:
+            self.head = self.head.next
+            self.size -= 1
+            return
+
+        counter = 0
+        ptr = self.head
+
+        while ptr:
+            if counter == (index - 1):
+                ptr.next = ptr.next.next
+                self.size -= 1
+                break
+            ptr = ptr.next
+            counter += 1
+
+    def build(self, data):  # O(n)
+        self.head = None
+        for item in data:
+            self.insert_at_end(item)
+
+    def length(self):  # O(n)
+        counter = 0
+        ptr = self.head
+        while ptr:
+            counter += 1
+            ptr = ptr.next
+        return counter
+
+    def print(self):  # O(n)
+        if not self.head:
+            print("Linked list is empty")
+            return
+
+        linked_list = []
+        ptr = self.head
+        while ptr:
+            linked_list.append(str(ptr.val))
+            ptr = ptr.next
+        print(" --> ".join(linked_list))
+
+
+class DoublyLinkedList:
+    def __init__(self):  # O(1)
+        self.head = None
+        self.size = 0
+
+    def __len__(self):  # O(1)
+        return self.size
+
+    def __iter__(self):  # O(n)
+        node = self.head
+        while node:
+            yield node.val
+            node = node.next
+
+    def insert_at_beginning(self, val):  # O(1)
+        if not self.head:
+            node = Node(val, self.head)
+            self.head = node
+        else:
+            node = Node(val, self.head)
+            self.head.prev = node
+            self.head = node
+        self.size += 1
+
+    def insert_at_end(self, val):  # O(n)
+        ptr = self.head
+
+        if not ptr:
+            self.head = Node(val)
+            self.size += 1
+            return
+
+        while ptr.next:
+            ptr = ptr.next
+
+        ptr.next = Node(val, next=None, prev=ptr)
+        self.size += 1
+
+    def insert(self, index, val):  # O(n)
+        if index < 0 or index > len(self):
+            raise IndexError()
+
+        if index == 0:
+            self.insert_at_beginning(val)
+            return
+
+        counter = 0
+        ptr = self.head
+
+        while ptr:
+            if counter == (index - 1):
+                node = Node(val, next=ptr.next, prev=ptr)
+                if node.next:
+                    node.next.prev = node
+                ptr.next = node
+                self.size += 1
+                break
+            ptr = ptr.next
+            counter += 1
+
+    def remove(self, index):  # O(n)
+        if index < 0 or index >= len(self):
+            raise IndexError()
+
+        if index == 0:
+            self.head = self.head.next
+            if self.head:
+                self.head.prev = None
+            self.size -= 1
+            return
+
+        counter = 0
+        ptr = self.head
+
+        while ptr:
+            if counter == index:
+                ptr.prev.next = ptr.next
+                if ptr.next:
+                    ptr.next.prev = ptr.prev
+                self.size -= 1
+                break
+            ptr = ptr.next
+            counter += 1
+
+    def build(self, data):  # O(n)
+        self.head = None
+        for item in data:
+            self.insert_at_end(item)
+
+    def length(self):  # O(n)
+        counter = 0
+        ptr = self.head
+        while ptr:
+            counter += 1
+            ptr = ptr.next
+        return counter
+
+    def get_last_node(self):  # O(n)
+        ptr = self.head
+        while ptr.next:
+            ptr = ptr.next
+        return ptr
+
+    def print(self):  # O(n)
+        if not self.head:
+            print("Linked list is empty")
+            return
+
+        linked_list = []
+        ptr = self.head
+        while ptr:
+            linked_list.append(str(ptr.val))
+            ptr = ptr.next
+        print(" <--> ".join(linked_list))
+
+    def print_backwards(self):  # O(n)
+        if not self.head:
+            print("Linked list is empty")
+            return
+
+        linked_list = []
+        ptr = self.get_last_node()
+        while ptr:
+            linked_list.append(str(ptr.val))
+            ptr = ptr.prev
+        print(" <--> ".join(linked_list))
