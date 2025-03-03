@@ -2,6 +2,8 @@
 Hash Table/Hash Map
 """
 
+from __future__ import annotations
+
 
 # hash table without collision handling
 class HashTable:
