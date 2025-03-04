@@ -1,22 +1,28 @@
-# stack is a last in first out (LIFO) data structure
-# pushing/popping elements is O(1)
-# searching for an element is O(n)
-# functions calls is managed using a call stack
+"""
+Stack
+"""
 
-# stack implementation using deque
+from __future__ import annotations
+
 from collections import deque
 
-class Stack():
+
+# stack implementation using deque
+class Stack:
     def __init__(self):
         self.stk = deque()
-    
+
     def push(self, val):
         self.stk.append(val)
 
     def pop(self):
-        self.stk.pop()
-    
+        if self.is_empty():
+            return None
+        return self.stk.pop()
+
     def peek(self):
+        if self.is_empty():
+            return None
         return self.stk[-1]
 
     def clear(self):
@@ -29,18 +35,22 @@ class Stack():
         return len(self.stk)
 
 
-# stack implementation using lists
-class LStack():
+# stack implementation using python list
+class LStack:
     def __init__(self):
         self.stk = []
-    
+
     def push(self, val):
         self.stk.append(val)
 
     def pop(self):
-        self.stk.pop()
-    
+        if self.is_empty():
+            return None
+        return self.stk.pop()
+
     def peek(self):
+        if self.is_empty():
+            return None
         return self.stk[-1]
 
     def clear(self):
