@@ -3,15 +3,14 @@
 - Linear Search
 - Binary Search
 - Naive Pattern Search
-- Selection Sort
 - Bubble Sort
+- Selection Sort
 - Insertion Sort
-- Shell Sort
 - Merge Sort
 - Quick Sort
+- Shell Sort
 - Radix Sort
 - Heap Sort
 - Breadth-First Search (BFS)
 - Depth-First Search (DFS)
-- Dijkstra
-- A\*
+- Dijkstra's Algorithm

@@ -1,3 +1,9 @@
+"""
+Dijkstra's Algorithm
+"""
+
+from __future__ import annotations
+
 from heapq import heappop, heappush
 from math import inf
 

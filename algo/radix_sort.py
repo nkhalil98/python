@@ -1,10 +1,16 @@
-# radix sort has a worst-case time complexity of O(nk)
-# radix sort has a space complexity of O(n+k)
-# radix sort has a best-case time complexity of Ω(nk)
+"""
+Radix Sort
+    - LSD Radix Sort
+"""
+
+from __future__ import annotations
 
 
-# least-significant-digit implementation of radix sort
-def radix_sort(arr):
+# least-significant-digit (LSD) implementation of radix sort
+def radix_sort(arr):  # O(nk) where k is the number of digits in the largest number
+    if not arr:
+        return
+
     max_value = max(arr)
     max_exponent = len(str(max_value))
     to_sort = arr[:]
@@ -13,7 +19,7 @@ def radix_sort(arr):
         position = exponent + 1
         index = -position
 
-        buckets = [[] for i in range(10)]
+        buckets = [[] for _ in range(10)]
 
         for num in to_sort:
             num_str = str(num)

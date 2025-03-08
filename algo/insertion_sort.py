@@ -1,14 +1,19 @@
-# insertion sort has a worst-case time complexity of O(n^2)
-# insertion sort has a space complexity of O(1)
-# insertion sort has a best-case time complexity of Ω(n)
+"""
+Insertion Sort
+"""
+
+from __future__ import annotations
 
 
-def insertion_sort(arr):
+def insertion_sort(arr):  # O(n^2)
     n = len(arr)
-    for i in range(1, n):
+    if n <= 1:
+        return
+
+    for i in range(1, n):  # O(n)
         anchor = arr[i]
-        j = i - 1
-        while j >= 0 and anchor < arr[j]:
-            arr[j + 1] = arr[j]
+        j = i - 1  # pointer
+        while j >= 0 and anchor < arr[j]:  # O(n)
+            arr[j + 1] = arr[j]  # shift elements to the right
             j -= 1
-        arr[j + 1] = anchor
+        arr[j + 1] = anchor  # insert

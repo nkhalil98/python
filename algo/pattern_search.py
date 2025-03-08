@@ -1,10 +1,23 @@
-def pattern_search(text, pattern):
-    for i in range(len(text)):
-        match_count = 0
-        for j in range(len(pattern)):
-            if pattern[j] == text[i + j]:
-                match_count += 1
-            else:
+"""
+Naive Pattern Search
+"""
+
+from __future__ import annotations
+
+
+def pattern_search(text, pattern):  # O(n*m): n = len(text), m = len(pattern)
+    if not text or not pattern:
+        return -1
+
+    n = len(text)
+    m = len(pattern)
+    if n < m:
+        return -1
+
+    for i in range(n - m + 1):  # O(n)
+        for j in range(m):  # O(m)
+            if pattern[j] != text[i + j]:
                 break
-        if match_count == len(pattern):
-            print(f"{pattern} found at index {i}")
+        else:
+            return i  # return the index of the first match
+    return -1

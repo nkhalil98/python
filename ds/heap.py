@@ -12,6 +12,9 @@ class MinHeap:
         self.heap_list = [None]
         self.count = 0
 
+    def __len__(self):
+        return self.count
+
     def parent_idx(self, idx):
         return idx // 2
 
@@ -25,8 +28,8 @@ class MinHeap:
         return self.left_child_idx(idx) <= self.count
 
     def add(self, element):
-        self.count += 1
         self.heap_list.append(element)
+        self.count += 1
         self.heapify_up()
 
     def heapify_up(self):
@@ -55,8 +58,8 @@ class MinHeap:
             return None
         min_value = self.heap_list[1]
         self.heap_list[1] = self.heap_list[self.count]
-        self.count -= 1
         self.heap_list.pop()
+        self.count -= 1
         self.heapify_down()
         return min_value
 
@@ -77,6 +80,9 @@ class MaxHeap:
         self.heap_list = [None]
         self.count = 0
 
+    def __len__(self):
+        return self.count
+
     def parent_idx(self, idx):
         return idx // 2
 
@@ -90,8 +96,8 @@ class MaxHeap:
         return self.left_child_idx(idx) <= self.count
 
     def add(self, element):
-        self.count += 1
         self.heap_list.append(element)
+        self.count += 1
         self.heapify_up()
 
     def heapify_up(self):
@@ -120,8 +126,8 @@ class MaxHeap:
             return None
         max_value = self.heap_list[1]
         self.heap_list[1] = self.heap_list[self.count]
-        self.count -= 1
         self.heap_list.pop()
+        self.count -= 1
         self.heapify_down()
         return max_value
 

@@ -1,14 +1,25 @@
-# selection sort has a worst-case time complexity of O(n^2)
-# selection sort has a space complexity of O(1)
-# selection sort has a best-case time complexity of Ω(n^2)
+"""
+Selection Sort
+"""
+
+from __future__ import annotations
 
 
-def selection_sort(arr):
+def selection_sort(arr):  # O(n^2)
     n = len(arr)
-    for i in range(n - 1):
-        min_index = i
-        for j in range(min_index + 1, n):
-            if arr[j] < arr[min_index]:
-                min_index = j
+    if n <= 1:
+        return
+
+    for i in range(n - 1):  # O(n)
+        min_index = find_min(arr, i)  # O(n)
         if i != min_index:
-            arr[i], arr[min_index] = arr[min_index], arr[i]
+            arr[i], arr[min_index] = arr[min_index], arr[i]  # swap
+
+
+def find_min(arr, start):  # O(n)
+    n = len(arr)
+    min_index = start
+    for i in range(start + 1, n):
+        if arr[i] < arr[min_index]:
+            min_index = i
+    return min_index
