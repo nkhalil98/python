@@ -14,3 +14,7 @@
 - Breadth-First Search (BFS)
 - Depth-First Search (DFS)
 - Dijkstra's Algorithm
+
+## Resources
+
+- [Grokking Algorithms](https://www.manning.com/books/grokking-algorithms)
