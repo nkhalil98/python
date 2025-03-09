@@ -1,24 +1,51 @@
+"""
+Breath First Search (BFS)
+    - Tree BFS
+    - Graph BFS
+"""
+
+from __future__ import annotations
+
 from collections import deque
-from tree import TreeNode
+from ds.tree import TreeNode
 
 
-def bfs(root: TreeNode, goal):
-    path_queue = deque()  # Initialize frontier queue
-
-    initial_path = [root]  # Add root path to the frontier
+# BFS implementation for tree
+def tree_bfs(root: TreeNode, target):  # O(n)
+    path_queue = deque()
+    initial_path = [root]
     path_queue.appendleft(initial_path)
 
-    while path_queue:  # As long as there are paths in the frontier
-        current_path = path_queue.pop()  # Get the next path in the frontier
-        current_node = current_path[-1]  # Get the visited node
+    while path_queue:
+        current_path = path_queue.pop()
+        current_node = current_path[-1]
 
-        if current_node.val == goal:  # Check if the goal node is found
+        if current_node.val == target:
             return current_path
 
-        # If node not found yet
-        for child in current_node.children:  # Add paths to children to the frontier
+        for child in current_node.children:
             new_path = current_path[:]
             new_path.append(child)
             path_queue.appendleft(new_path)
 
-    return None  # Return None if goal not found
+    return None
+
+
+# BFS implementation for graph
+def graph_bfs(graph: dict, start, target):  # O(V+E)
+    path = [start]
+    vertex_and_path = (start, path)
+    bfs_queue = deque([vertex_and_path])
+    visited = set()
+
+    while bfs_queue:
+        current_vertex, path = bfs_queue.popleft()
+        visited.add(current_vertex)
+        for neighbor in graph[current_vertex]:
+            if neighbor not in visited:
+                if neighbor == target:
+                    return path + [neighbor]
+                else:
+                    bfs_queue.append((neighbor, path + [neighbor]))
+
+    return None

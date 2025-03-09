@@ -1,16 +1,46 @@
-from tree import TreeNode
+"""
+Depth First Search (DFS)
+    - Tree DFS
+    - Graph DFS
+"""
+
+from __future__ import annotations
+
+from ds.tree import TreeNode
 
 
-def dfs(root: TreeNode, goal, path=()):
-    path = path + (root,)  # Initial path
+# DFS implementation for tree
+def tree_dfs(root: TreeNode, target, path=None):  # O(n)
+    if path is None:
+        path = ()
+    path = path + (root,)
 
-    if root.val == goal:  # Base case
+    if root.val == target:
         return path
 
     for child in root.children:
-        path_found = dfs(child, goal, path)  # Recursive step
+        path_found = tree_dfs(child, target, path)
 
-        if path_found is not None:  # Return path if path exists
+        if path_found is not None:
             return path_found
 
-    return None  # Return None if goal not found
+    return None
+
+
+# DFS implementation for graph
+def graph_dfs(graph: dict, start, target, visited=None):  # O(V+E)
+    if visited is None:
+        visited = []
+
+    visited.append(start)
+
+    if start == target:
+        return visited
+
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            path = graph_dfs(graph, neighbor, target, visited)
+            if path:
+                return path
+
+    return None
