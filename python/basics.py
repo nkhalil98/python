@@ -58,8 +58,10 @@ to_str = str(1)  # int to str
 to_int = int("1")  # str to int
 
 ## type checking
+# everything in Python is an object and each object has a type
 a = 1
 print(type(a))  # int
+print(type(type(a)))  # type
 print(isinstance(a, int))  # True
 
 
@@ -122,13 +124,25 @@ else:
     print("a is negative")
 # python does not require an else block at the end of an if-elif chain
 
-### multiple tests
+### short-circuiting and multiple if statements
+a = 200
+
+if a > 100:
+    print("Greater than 100")
+elif a > 50:
+    print("Greater than 50")
+elif a > 0:
+    print("Positive")
+# prints "Greater than 100" only
+
+
 if a > 100:
     print("Greater than 100")
 if a > 50:
     print("Greater than 50")
 if a > 0:
     print("Positive")
+# prints "Greater than 100", "Greater than 50", and "Positive"
 
 
 ### match statement
