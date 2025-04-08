@@ -7,7 +7,7 @@ from __future__ import annotations
 from random import randrange
 
 
-def quick_sort(arr, method="hoare"):
+def quick_sort(arr, method="random"):
     if not arr:
         return arr
 
@@ -17,7 +17,7 @@ def quick_sort(arr, method="hoare"):
         "random": random_quicksort,
     }
 
-    sort_method = methods.get(method, hoare_quick_sort)
+    sort_method = methods.get(method, random_quicksort)
     sort_method(arr, 0, len(arr) - 1)
     return arr
 
@@ -92,3 +92,20 @@ def random_quicksort(arr, start, end):  # O(nlog(n))
 
     random_quicksort(arr, start, less_than_pivot - 1)  # O(log(n))
     random_quicksort(arr, less_than_pivot + 1, end)  # O(log(n))
+
+
+# quick sort implementation using the first element as pivot
+def first_element_quick_sort(arr):  # O(nlog(n))
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[0]
+
+    less_than_pivot = [x for x in arr[1:] if x <= pivot]  # O(n)
+    greater_than_pivot = [x for x in arr[1:] if x > pivot]  # O(n)
+
+    return (
+        first_element_quick_sort(less_than_pivot)
+        + [pivot]
+        + first_element_quick_sort(greater_than_pivot)
+    )  # O(nlog(n))
