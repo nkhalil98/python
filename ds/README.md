@@ -15,3 +15,4 @@
   - Min-Heap
   - Max-Heap
 - Graph
+- LRU Cache
