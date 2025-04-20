@@ -2,12 +2,12 @@ import multiprocessing
 import time
 
 
-def square(l: list[int]) -> list[int]:
-    return [x * x for x in l]
+def square(arr: list[int]) -> list[int]:
+    return [x * x for x in arr]
 
 
-def cube(l: list[int]) -> list[int]:
-    return [x * x * x for x in l]
+def cube(arr: list[int]) -> list[int]:
+    return [x * x * x for x in arr]
 
 
 if __name__ == "__main__":

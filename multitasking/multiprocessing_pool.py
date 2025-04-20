@@ -28,7 +28,3 @@ if __name__ == "__main__":
     pool.join()
     end = time.time()
     print(f"Time taken with multiprocessing: {end - start}")
-
-    # NOTE: it is possible that the time taken with multiprocessing is more than the time taken without multiprocessing
-    # due to the overhead of creating and managing processes. The performance improvement with multiprocessing is
-    # more evident when the function being executed is computationally expensive.

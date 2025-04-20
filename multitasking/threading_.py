@@ -5,20 +5,20 @@ import time
 n = list(range(20))
 
 
-def square(l: list[int]) -> list[int]:
-    l2 = []
-    for i in l:
+def square(arr: list[int]) -> list[int]:
+    arr2 = []
+    for i in arr:
         time.sleep(0.1)  # artificial time delay
-        l2.append(i * i)
-    return l2
+        arr2.append(i * i)
+    return arr2
 
 
-def cube(l: list[int]) -> list[int]:
-    l3 = []
-    for i in l:
+def cube(arr: list[int]) -> list[int]:
+    arr3 = []
+    for i in arr:
         time.sleep(0.1)  # artificial time delay
-        l3.append(i * i * i)
-    return l3
+        arr3.append(i * i * i)
+    return arr3
 
 
 # without threading
