@@ -39,11 +39,20 @@ my_str = "hello"  # str (string: single or double quotes)
 my_list = [1, 2, 3, "foo", [4, 5]]  # list (dynamic array)
 my_tuple = (1, 2, 3)  # tuple (immutable sequence of items - parentheses are optional)
 my_range = range(10)  # range (immutable sequence of numbers)
-# sequence data types are indexed starting from 0 and can be sliced using
-# [start:stop:step]
 
-## mapping data types
-# dict (dictionary/hashmap/hash table/associative array)
+
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+### indexing (0-based)
+first = nums[0]  # first element
+last = nums[-1]  # can use negative indexing to access elements from the end
+
+### slicing [start:end:step]
+middle = nums[4:7]  # start index is inclusive, end index is exclusive
+every_other = nums[::2]  # slicing with step
+reversed = nums[::-1]  # reverse the list (negative step)
+
+## mapping data types: dict (dictionary/hashmap/hash table/associative array)
 my_dict = {"name": "Nabil", "age": 26}  # key-value pairs
 name = my_dict["name"]  # access a value using a key
 my_dict["city"] = "Boston"  # add a new key-value pair
