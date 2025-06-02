@@ -10,7 +10,6 @@ def insert_element(arr, e, n):
     out = []
     for i in range(len(arr)):
         out.append(arr[i])
-
         if (i + 1) % n == 0:
             out.append(e)
     return out
