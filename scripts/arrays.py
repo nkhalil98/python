@@ -24,6 +24,6 @@ def insert_element_inplace(arr, e, n):
     return arr
 
 
-def chunck(arr, n):
+def chunk(arr, n):
     result = [arr[i : i + n] for i in range(0, len(arr), n)]
     return result
