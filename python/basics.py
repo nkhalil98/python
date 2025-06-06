@@ -43,6 +43,9 @@ my_range = range(10)  # range (immutable sequence of numbers)
 
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+### length
+n = len(nums)  # length of the sequence
+
 ### indexing (0-based)
 first = nums[0]  # first element
 last = nums[-1]  # can use negative indexing to access elements from the end
@@ -51,6 +54,9 @@ last = nums[-1]  # can use negative indexing to access elements from the end
 middle = nums[4:7]  # start index is inclusive, end index is exclusive
 every_other = nums[::2]  # slicing with step
 reversed = nums[::-1]  # reverse the list (negative step)
+
+### concatenation
+more_nums = nums + [11, 12, 13]  # concatenate two lists
 
 ## mapping data types: dict (dictionary/hashmap/hash table/associative array)
 my_dict = {"name": "Nabil", "age": 26}  # key-value pairs
@@ -142,7 +148,6 @@ elif a > 50:
     print("Greater than 50")
 elif a > 0:
     print("Positive")
-# prints "Greater than 100" only
 
 
 if a > 100:
@@ -151,7 +156,6 @@ if a > 50:
     print("Greater than 50")
 if a > 0:
     print("Positive")
-# prints "Greater than 100", "Greater than 50", and "Positive"
 
 
 ### match statement
@@ -197,6 +201,17 @@ active = True
 while active:
     print("Hello")
     active = False
+
+#### continue and break statements
+for i in range(10):
+    if i % 2 == 1:  # skip odd numbers
+        continue
+    print(i)  #
+
+for i in range(10):
+    if i == 5:  # stop the loop when i is 5
+        break
+    print(i)
 
 
 ### list comprehensions
