@@ -55,8 +55,9 @@ middle = nums[4:7]  # start index is inclusive, end index is exclusive
 every_other = nums[::2]  # slicing with step
 reversed = nums[::-1]  # reverse the list (negative step)
 
-### concatenation
+### concatenation and repetition
 more_nums = nums + [11, 12, 13]  # concatenate two lists
+repeated = nums * 2  # repeat the list
 
 ## mapping data types: dict (dictionary/hashmap/hash table/associative array)
 my_dict = {"name": "Nabil", "age": 26}  # key-value pairs
