@@ -389,7 +389,8 @@ except Exception as e:  # catch the exception object
 
 ## class definition
 class Person:
-    def __init__(self, name, age):  # constructor (dunder/magic method)
+    # initializer
+    def __init__(self, name, age):  # dunder/magic method
         self.name = name  # instance variable/attribute
         self.age = age
         self.id = None  # default value
@@ -422,7 +423,7 @@ p.set_id(2)  # using setter method
 ## inheritance
 class Student(Person):  # Student is a subclass of Person superclass
     def __init__(self, name, age, school):
-        super().__init__(name, age)
+        super().__init__(name, age)  # explicitly call the superclass initializer
         self.school = school
 
     def study(self):
