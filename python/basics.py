@@ -2,6 +2,7 @@
 # --------
 print("Hello, World!")
 
+
 # comments
 # --------
 # this is a comment
@@ -10,17 +11,19 @@ print("Hello, World!")
 # variables
 # ---------
 a = 1  # variable assignment
-a = "hello"  # python is dynamically typed
+a = "hello"  # python is dynamically typed (variable type can change)
 a: int = 1  # type hinting (optional)
 a, b = 1, 2  # multiple assignment
+a, b = b, a  # swap values of two variables
+CONST = 3  # python does not have true constants (by convention, constants are written in uppercase)
 a = b = 1  # chain assignment
-a, b = b, a  # swap values
-CONST = 3  # python does not have constants (use uppercase for constants)
+# python keywords cannot be used as variable names
 
 
 # user input
 # ----------
-name = input("Enter your name: ")
+prompt = "Enter your name: "
+name = input(prompt)
 print("Hello, " + name)
 
 
@@ -39,7 +42,6 @@ my_str = "hello"  # str (string: single or double quotes)
 my_list = [1, 2, 3, "foo", [4, 5]]  # list (dynamic array)
 my_tuple = (1, 2, 3)  # tuple (immutable sequence of items - parentheses are optional)
 my_range = range(10)  # range (immutable sequence of numbers)
-
 
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -68,13 +70,12 @@ my_dict["city"] = "Boston"  # add a new key-value pair
 my_set = {1, 2, 3}  # set (unordered collection of unique items)
 frozen_set = frozenset({1, 2, 3, 4, 5})  # frozenset (immutable set)
 
-
 ## type casting
 to_str = str(1)  # int to str
 to_int = int("1")  # str to int
 
 ## type checking
-# everything in Python is an object and each object has a type
+# everything in python is an object and each object has a type
 a = 1
 print(type(a))  # int
 print(type(type(a)))  # type
@@ -111,11 +112,11 @@ a = 1
 a += 1  # increment
 a -= 1  # decrement
 
-## identity
-a is b  # True if both variables are the same object
-
 ## membership
 a in b  # True if a sequence with the specified value is present in the object
+
+## identity
+a is b  # True if both variables are the same object
 
 
 # control flow
@@ -123,14 +124,18 @@ a in b  # True if a sequence with the specified value is present in the object
 
 ## conditional statements
 
-### if-elif-else statement
+### if statement
+if a > 0:
+    print("a is positive")
+
+### if-else statement
 names = ["Alice", "Bob", "Charlie"]
 if "Alice" in names:
     print("Alice is in the list")
 else:
     print("Alice is not in the list")
 
-
+### if-elif-else statement
 a = 80
 if a > 0:
     print("a is positive")
@@ -149,7 +154,7 @@ elif a > 50:
     print("Greater than 50")
 elif a > 0:
     print("Positive")
-
+# prints only "Greater than 100" and skips the rest
 
 if a > 100:
     print("Greater than 100")
@@ -157,7 +162,7 @@ if a > 50:
     print("Greater than 50")
 if a > 0:
     print("Positive")
-
+# prints all three statements because each if is evaluated independently
 
 ### match statement
 status = 404
@@ -173,14 +178,16 @@ match status:  # type: ignore
     case _:
         print("Something went wrong")
 
-
 ## loops
 
 ### for loops
 L = [1, 2, 3]
+
+### index-based iteration
 for i in range(len(L)):  # for i in range(n)
     print(L[i])
 
+### item-based iteration
 for i in L:  # for item in iterable
     print(i)
 
@@ -214,7 +221,6 @@ for i in range(10):
         break
     print(i)
 
-
 ### list comprehensions
 nums = [1, 2, 3, 4, 5]
 squares = [x**2 for x in nums]
@@ -247,7 +253,7 @@ def add2(x, y, z=0):  # keyword argument with a default value
 
 
 x1 = add2(1, 2)  # z = 0
-x2 = add2(1, 2, 3)
+x2 = add2(1, 2, 3)  # z = 3
 
 
 ## functions can return multiple values
@@ -329,7 +335,7 @@ f = open("filename2.txt", "w")
 f.write("Hi")
 f.close()
 
-### using with statement (context manager)
+### using with statement
 with open("filename2.txt", "w") as f:
     f.write("Hello")
 
@@ -342,7 +348,6 @@ with open("filename2.txt", "a") as f:
 # --------------
 # Some common errors are: SyntaxError, NameError, TypeError, IndexError,
 # IndentationError, KeyError, ValueError, ZeroDivisionError, FileNotFoundError
-
 
 ## exceptions
 try:
