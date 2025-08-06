@@ -6,7 +6,7 @@
 - Linked List
   - Singly Linked List
   - Doubly Linked List
-- Hash Table (Hash Map)
+- Hash Table/Hash Map
 - Stack
 - Queue
 - Tree

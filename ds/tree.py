@@ -26,12 +26,16 @@ class TreeNode:
     def remove_child(self, child):  # O(n)
         self.children.remove(child)
 
-    def print_tree(self):  # O(n)
-        spaces = " " * self.get_level() * 3
-        prefix = spaces + "|__" if self.parent else ""
+    def __str__(self):  # O(n)
+        lines = []
 
-        print(prefix + str(self.val))
+        def traverse(node):
+            indent = " " * node.get_level() * 2
+            prefix = indent + "└── " if node.parent else ""
+            result = f"{prefix}{node.val}".rjust(3)
+            lines.append(result)
+            for child in node.children:
+                traverse(child)
 
-        if self.children:
-            for child in self.children:
-                child.print_tree()
+        traverse(self)
+        return "\n".join(lines)
