@@ -223,3 +223,12 @@ class DoublyLinkedList:
             linked_list.append(str(ptr.val))
             ptr = ptr.prev
         print(" <--> ".join(linked_list))
+
+
+# TODO
+class CircularLinkedList:
+    pass
+
+
+class CircularDoublyLinkedList:
+    pass
