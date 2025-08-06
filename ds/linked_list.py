@@ -14,7 +14,7 @@ class Node:
         self.prev = prev
 
 
-class SinglyLinkedList:
+class LinkedList:
     def __init__(self):  # O(1)
         self.head = None
         self.size = 0
@@ -91,14 +91,6 @@ class SinglyLinkedList:
         self.head = None
         for item in data:
             self.insert_at_end(item)
-
-    def length(self):  # O(n)
-        counter = 0
-        ptr = self.head
-        while ptr:
-            counter += 1
-            ptr = ptr.next
-        return counter
 
     def print(self):  # O(n)
         if not self.head:
@@ -201,14 +193,6 @@ class DoublyLinkedList:
         self.head = None
         for item in data:
             self.insert_at_end(item)
-
-    def length(self):  # O(n)
-        counter = 0
-        ptr = self.head
-        while ptr:
-            counter += 1
-            ptr = ptr.next
-        return counter
 
     def get_last_node(self):  # O(n)
         ptr = self.head
