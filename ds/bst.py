@@ -11,7 +11,23 @@ class BinarySearchTreeNode:
         self.left = None
         self.right = None
 
-    def add_child(self, val):  # O(log n) average, O(n) worst
+    def __contains__(self, val):  # O(log(n)) average, O(n) worst
+        if self.val == val:
+            return True
+
+        if val < self.val:
+            if self.left:
+                return val in self.left
+            else:
+                return False
+
+        if val > self.val:
+            if self.right:
+                return val in self.right
+            else:
+                return False
+
+    def add_child(self, val):  # O(log(n)) average, O(n) worst
         if val == self.val:
             return
 
@@ -25,22 +41,6 @@ class BinarySearchTreeNode:
                 self.right.add_child(val)
             else:
                 self.right = BinarySearchTreeNode(val)
-
-    def search(self, val):  # O(log n) average, O(n) worst
-        if self.val == val:
-            return True
-
-        if val < self.val:
-            if self.left:
-                return self.left.search(val)
-            else:
-                return False
-
-        if val > self.val:
-            if self.right:
-                return self.right.search(val)
-            else:
-                return False
 
     def in_order_traversal(self):  # O(n)
         elements = []
@@ -79,7 +79,7 @@ class BinarySearchTreeNode:
 
         return elements
 
-    def delete(self, val):  # O(log n) average, O(n) worst
+    def delete(self, val):  # O(log(n)) average, O(n) worst
         if val < self.val:
             if self.left:
                 self.left = self.left.delete(val)
@@ -100,11 +100,11 @@ class BinarySearchTreeNode:
 
         return self
 
-    def delete2(self, val):  # O(log n) average, O(n) worst
-        if val < self.data:
+    def delete2(self, val):  # O(log(n)) average, O(n) worst
+        if val < self.val:
             if self.left:
                 self.left = self.left.delete(val)
-        elif val > self.data:
+        elif val > self.val:
             if self.right:
                 self.right = self.right.delete(val)
         else:
@@ -116,17 +116,17 @@ class BinarySearchTreeNode:
                 return self.right
 
             max_val = self.left.find_max()
-            self.data = max_val
+            self.val = max_val
             self.left = self.left.delete(max_val)
 
         return self
 
-    def find_max(self):  # O(log n) average, O(n) worst
+    def find_max(self):  # O(log(n)) average, O(n) worst
         if self.right is None:
             return self.val
         return self.right.find_max()
 
-    def find_min(self):  # O(log n) average, O(n) worst
+    def find_min(self):  # O(log(n)) average, O(n) worst
         if self.left is None:
             return self.val
         return self.left.find_min()
@@ -135,3 +135,8 @@ class BinarySearchTreeNode:
         left_sum = self.left.calculate_sum() if self.left else 0
         right_sum = self.right.calculate_sum() if self.right else 0
         return self.val + left_sum + right_sum
+
+    def height(self):  # O(n)
+        left_height = self.left.height() if self.left else 0
+        right_height = self.right.height() if self.right else 0
+        return 1 + max(left_height, right_height)
