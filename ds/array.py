@@ -1,44 +1,12 @@
 """
 Array
-    - Python List (Dynamic Array)
     - Static Array
     - Dynamic Array
 """
 
 from __future__ import annotations
 
-import copy
 
-# python list (dynamic array)
-arr = [1, 2, "three", [4, 5, 6], True]  # O(n)
-arr.append(7)  # O(1)
-arr.index("three")  # O(n)
-arr.insert(0, 0)  # O(n)
-three = arr[3]  # O(1)
-two = arr.index(2)  # O(n)
-seven = arr.pop()  # O(1)
-zero = arr.pop(0)  # O(n)
-
-## aliasing and copying (shallow and deep)
-arr = [1, 2, 3, [4, 5, 6]]
-alias = arr  # aliasing
-copy_1 = arr[:]  # shallow copy
-copy_2 = arr.copy()  # shallow copy
-copy_3 = list(arr)  # shallow copy
-deep_copy = copy.deepcopy(arr)  # deep copy
-
-## modifying the original list
-arr[0] = 0
-arr[3][0] = 0
-print(arr)  # [0, 2, 3, [0, 5, 6]]
-print(alias)  # [0, 2, 3, [0, 5, 6]]
-print(copy_1)  # [1, 2, 3, [0, 5, 6]]
-print(copy_2)  # [1, 2, 3, [0, 5, 6]]
-print(copy_3)  # [1, 2, 3, [0, 5, 6]]
-print(deep_copy)  # [1, 2, 3, [4, 5, 6]]
-
-
-# static array
 class StaticArray:
     def __init__(self):  # O(1)
         self.arr = []
@@ -102,7 +70,6 @@ class StaticArray:
         return self.delete_at(len(self) - 1)
 
 
-# dynamic array
 class DynamicArray(StaticArray):
     def __init__(self, r=2):  # O(1)
         super().__init__()
