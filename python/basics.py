@@ -90,7 +90,7 @@ a + b  # addition
 a - b  # subtraction
 a * b  # multiplication
 a / b  # division
-a // b  # integer/C division
+a // b  # integer/floor/C division
 a % b  # modulo
 a**b  # exponentiation
 
@@ -256,7 +256,7 @@ x1 = add2(1, 2)  # z = 0
 x2 = add2(1, 2, 3)  # z = 3
 
 
-## functions can return multiple values
+## functions can return multiple values (technically returns a tuple)
 def add_sub(x, y):
     return x + y, x - y
 
