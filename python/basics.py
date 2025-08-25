@@ -10,13 +10,11 @@ print("Hello, World!")
 
 # variables
 # ---------
-a = 1  # variable assignment
+a = 1  # variable assignment with the assignment operator (=)
 a = "hello"  # python is dynamically typed (variable type can change)
-a: int = 1  # type hinting (optional)
 a, b = 1, 2  # multiple assignment
 a, b = b, a  # swap values of two variables
 CONST = 3  # python does not have true constants (by convention, constants are written in uppercase)
-a = b = 1  # chain assignment
 # python keywords cannot be used as variable names
 
 
@@ -33,16 +31,15 @@ print("Hello, " + name)
 ## native data types
 a = 1  # int (integer)
 b = 2.3  # float (floating-point number)
-c = 1 + 2j  # complex number
-x = True  # bool (True or False)
-n = None  # null
+x = True  # bool (Boolean - True or False)
+n = None  # NoneType
 
 ## sequence data types
-my_str = "hello"  # str (string: single or double quotes)
-my_list = [1, 2, 3, "foo", [4, 5]]  # list (dynamic array)
-my_tuple = (1, 2, 3)  # tuple (immutable sequence of items - parentheses are optional)
-my_range = range(10)  # range (immutable sequence of numbers)
+my_str = "hello"  # str (string - immutable sequence of characters)
+my_list = [1, 2, 3, "foo", [4, 5]]  # list (dynamic array of elements)
+my_tuple = (1, 2, 3)  # tuple (immutable sequence of elements)
 
+## sequence operations
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 ### length
@@ -67,8 +64,7 @@ name = my_dict["name"]  # access a value using a key
 my_dict["city"] = "Boston"  # add a new key-value pair
 
 ## set data types
-my_set = {1, 2, 3}  # set (unordered collection of unique items)
-frozen_set = frozenset({1, 2, 3, 4, 5})  # frozenset (immutable set)
+my_set = {1, 2, 3}  # set (unordered collection of unique elements)
 
 ## type casting
 to_str = str(1)  # int to str
@@ -78,7 +74,6 @@ to_int = int("1")  # str to int
 # everything in python is an object and each object has a type
 a = 1
 print(type(a))  # int
-print(type(type(a)))  # type
 print(isinstance(a, int))  # True
 
 
@@ -94,7 +89,7 @@ a // b  # integer/floor/C division
 a % b  # modulo
 a**b  # exponentiation
 
-## comparison
+## comparison/relational
 a > b  # greater than
 a < b  # less than
 a == b  # equal to
@@ -103,9 +98,9 @@ a >= b  # greater than or equal to
 a <= b  # less than or equal to
 
 ## logical
-a and b  # logical and
-a or b  # logical or
-not a  # logical not
+a and b  # and
+a or b  #  or
+not a  # not
 
 ## assignment
 a = 1
@@ -113,10 +108,10 @@ a += 1  # increment
 a -= 1  # decrement
 
 ## membership
-a in b  # True if a sequence with the specified value is present in the object
+a in b  # True if a contains b
 
 ## identity
-a is b  # True if both variables are the same object
+a is b  # True if both variables reference the same object in memory
 
 
 # control flow
@@ -164,19 +159,6 @@ if a > 0:
     print("Positive")
 # prints all three statements because each if is evaluated independently
 
-### match statement
-status = 404
-match status:  # type: ignore
-    case 400:
-        print("Bad Request")
-    case 401:
-        print("Unauthorized")
-    case 403:
-        print("Forbidden")
-    case 404:
-        print("Not Found")
-    case _:
-        print("Something went wrong")
 
 ## loops
 
@@ -187,9 +169,9 @@ L = [1, 2, 3]
 for i in range(len(L)):  # for i in range(n)
     print(L[i])
 
-### item-based iteration
-for i in L:  # for item in iterable
-    print(i)
+### element-based iteration
+for element in L:  # for element in iterable
+    print(element)
 
 ### while loops
 
@@ -214,7 +196,7 @@ while active:
 for i in range(10):
     if i % 2 == 1:  # skip odd numbers
         continue
-    print(i)  #
+    print(i)
 
 for i in range(10):
     if i == 5:  # stop the loop when i is 5
@@ -264,7 +246,7 @@ def add_sub(x, y):
 a, b = add_sub(2, 1)
 
 
-## functions can modify mutable objects
+## functions can modify mutable arguments (lists, dictionaries, sets) in-place
 def square(L):
     for i in range(len(L)):
         L[i] = L[i] ** 2
@@ -273,7 +255,7 @@ def square(L):
 L1 = [1, 2, 3]
 L2 = [4, 5, 6]
 square(L1)  # L1 = [1, 4, 9]
-square(L2[:])  # L2 = [4, 5, 6]
+square(L2[:])  # pass a copy to avoid modifying the original list - L2 = [4, 5, 6]
 
 
 ## arbitrary number of arguments
@@ -300,33 +282,20 @@ parse_id(id=0, name="Nabil", age=26)
 ## reading
 
 ### reading the entire file
-f = open("filename.txt", "r")
+f = open("filename.txt")
 content = f.read()
 lines = content.splitlines()
 for line in lines:
     print(line)
 f.close()  # close the file to free up resources
 
-### reading line by line
-f = open("filename.txt", "r")
-for line in f:
-    print(line.rstrip())
-f.close()
-
-
-### reading all lines
-f = open("filename.txt", "r")
-lines = f.readlines()
-for line in lines:
-    print(line.rstrip())
-f.close()
-
 
 ### using with statement (context manager)
-with open("filename.txt", "r") as f:
-    for line in f:
-        print(line.rstrip())
-
+with open("filename.txt") as f:
+    content = f.read()
+    lines = content.splitlines()
+    for line in lines:
+        print(line)
 
 ##  writing
 
@@ -360,6 +329,11 @@ try:
     print(1 / 0)
 except ZeroDivisionError:  # catch specific exceptions
     print("Cannot divide by zero")
+
+try:
+    print(1 / 0)
+except ZeroDivisionError:
+    pass  # silently ignore the error
 
 try:
     print(1 / 0)
@@ -442,20 +416,3 @@ s.study()  # method from subclass
 print(issubclass(Student, Person))  # True
 print(isinstance(s, Student))  # True
 print(isinstance(s, Person))  # True
-
-
-## composition
-class University:
-    def __init__(self, name, city, state):
-        self.name = name
-        self.city = city
-        self.state = state
-
-
-class MITStudent(Student):
-    def __init__(self, name, age):
-        super().__init__(name, age, University("MIT", "Cambridge", "MA"))
-
-
-mit_student = MITStudent("Nabil", 26)
-print(mit_student.school.name)
