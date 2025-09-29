@@ -6,12 +6,12 @@ from __future__ import annotations
 
 
 class BinarySearchTreeNode:
-    def __init__(self, val):  # O(1)
+    def __init__(self, val):
         self.val = val
         self.left = None
         self.right = None
 
-    def __contains__(self, val):  # O(log(n)) average, O(n) worst
+    def __contains__(self, val):
         if self.val == val:
             return True
 
@@ -27,7 +27,7 @@ class BinarySearchTreeNode:
             else:
                 return False
 
-    def add_child(self, val):  # O(log(n)) average, O(n) worst
+    def add_child(self, val):
         if val == self.val:
             return
 
@@ -42,7 +42,7 @@ class BinarySearchTreeNode:
             else:
                 self.right = BinarySearchTreeNode(val)
 
-    def in_order_traversal(self):  # O(n)
+    def in_order_traversal(self):
         elements = []
 
         if self.left:
@@ -55,7 +55,7 @@ class BinarySearchTreeNode:
 
         return elements
 
-    def post_order_traversal(self):  # O(n)
+    def post_order_traversal(self):
         elements = []
 
         if self.left:
@@ -68,7 +68,7 @@ class BinarySearchTreeNode:
 
         return elements
 
-    def pre_order_traversal(self):  # O(n)
+    def pre_order_traversal(self):
         elements = [self.val]
 
         if self.left:
@@ -79,7 +79,7 @@ class BinarySearchTreeNode:
 
         return elements
 
-    def delete(self, val):  # O(log(n)) average, O(n) worst
+    def delete(self, val):
         if val < self.val:
             if self.left:
                 self.left = self.left.delete(val)
@@ -100,7 +100,7 @@ class BinarySearchTreeNode:
 
         return self
 
-    def delete2(self, val):  # O(log(n)) average, O(n) worst
+    def delete2(self, val):
         if val < self.val:
             if self.left:
                 self.left = self.left.delete(val)
@@ -121,22 +121,28 @@ class BinarySearchTreeNode:
 
         return self
 
-    def find_max(self):  # O(log(n)) average, O(n) worst
+    def find_max(self):
         if self.right is None:
             return self.val
         return self.right.find_max()
 
-    def find_min(self):  # O(log(n)) average, O(n) worst
+    def find_min(self):
         if self.left is None:
             return self.val
         return self.left.find_min()
 
-    def calculate_sum(self):  # O(n)
+    def calculate_sum(self):
         left_sum = self.left.calculate_sum() if self.left else 0
         right_sum = self.right.calculate_sum() if self.right else 0
         return self.val + left_sum + right_sum
 
-    def height(self):  # O(n)
+    def height(self):
         left_height = self.left.height() if self.left else 0
         right_height = self.right.height() if self.right else 0
         return 1 + max(left_height, right_height)
+
+    def build(self, elements):
+        self.val = elements[0]
+        for element in elements[1:]:
+            self.add_child(element)
+        return self
