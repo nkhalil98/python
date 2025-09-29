@@ -22,15 +22,14 @@ def quick_sort(arr, method="random"):
     return arr
 
 
-# quick sort implementation using hoare partition scheme
-def hoare_quick_sort(arr, start, end):  # O(nlog(n))
+def hoare_quick_sort(arr, start, end):
     if start < end:
-        p_index = hpartition(arr, start, end)  # O(n)
-        hoare_quick_sort(arr, start, p_index - 1)  # O(log(n))
-        hoare_quick_sort(arr, p_index + 1, end)  # O(log(n))
+        p_index = hpartition(arr, start, end)
+        hoare_quick_sort(arr, start, p_index - 1)
+        hoare_quick_sort(arr, p_index + 1, end)
 
 
-def hpartition(arr, start, end):  # O(n)
+def hpartition(arr, start, end):
     pivot_index = start
     pivot = arr[pivot_index]
 
@@ -49,16 +48,15 @@ def hpartition(arr, start, end):  # O(n)
     return end
 
 
-# quick sort implementation using lomuto partition scheme
-def lomuto_quick_sort(arr, start, end):  # O(nlog(n))
+def lomuto_quick_sort(arr, start, end):
     if start >= end:
         return
-    p_index = lpartition(arr, start, end)  # O(n)
-    lomuto_quick_sort(arr, start, p_index - 1)  # O(log(n))
-    lomuto_quick_sort(arr, p_index + 1, end)  # O(log(n))
+    p_index = lpartition(arr, start, end)
+    lomuto_quick_sort(arr, start, p_index - 1)
+    lomuto_quick_sort(arr, p_index + 1, end)
 
 
-def lpartition(arr, start, end):  # O(n)
+def lpartition(arr, start, end):
     pivot = arr[end]
     p_index = start
 
@@ -72,8 +70,7 @@ def lpartition(arr, start, end):  # O(n)
     return p_index
 
 
-# quick sort implementation using random pivot
-def random_quicksort(arr, start, end):  # O(nlog(n))
+def random_quicksort(arr, start, end):
     if start >= end:
         return
 
@@ -83,29 +80,28 @@ def random_quicksort(arr, start, end):  # O(nlog(n))
 
     less_than_pivot = start
 
-    for i in range(start, end):  # O(n)
+    for i in range(start, end):
         if arr[i] < pivot_element:
             arr[i], arr[less_than_pivot] = arr[less_than_pivot], arr[i]
             less_than_pivot += 1
 
     arr[end], arr[less_than_pivot] = arr[less_than_pivot], arr[end]
 
-    random_quicksort(arr, start, less_than_pivot - 1)  # O(log(n))
-    random_quicksort(arr, less_than_pivot + 1, end)  # O(log(n))
+    random_quicksort(arr, start, less_than_pivot - 1)
+    random_quicksort(arr, less_than_pivot + 1, end)
 
 
-# quick sort implementation using the first element as pivot
-def first_element_quick_sort(arr):  # O(nlog(n))
+def first_element_quick_sort(arr):
     if len(arr) <= 1:
         return arr
 
     pivot = arr[0]
 
-    less_than_pivot = [x for x in arr[1:] if x <= pivot]  # O(n)
-    greater_than_pivot = [x for x in arr[1:] if x > pivot]  # O(n)
+    less_than_pivot = [x for x in arr[1:] if x <= pivot]
+    greater_than_pivot = [x for x in arr[1:] if x > pivot]
 
     return (
         first_element_quick_sort(less_than_pivot)
         + [pivot]
         + first_element_quick_sort(greater_than_pivot)
-    )  # O(nlog(n))
+    )

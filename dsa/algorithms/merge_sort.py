@@ -5,8 +5,8 @@ Merge Sort
 from __future__ import annotations
 
 
-def merge_sort(arr):  # O(nlog(n))
-    if len(arr) <= 1:  # base case
+def merge_sort(arr):
+    if len(arr) <= 1:
         return arr
 
     mid = len(arr) // 2
@@ -14,13 +14,13 @@ def merge_sort(arr):  # O(nlog(n))
     left = arr[:mid]
     right = arr[mid:]
 
-    left_sorted = merge_sort(left)  # O(n/2)
-    right_sorted = merge_sort(right)  # O(n/2)
+    left_sorted = merge_sort(left)
+    right_sorted = merge_sort(right)
 
-    return merge(left_sorted, right_sorted, arr)  # O(n)
+    return merge(left_sorted, right_sorted, arr)
 
 
-def merge(a, b, arr):  # O(n)
+def merge(a, b, arr):
     n = len(a)
     m = len(b)
 
@@ -48,9 +48,7 @@ def merge(a, b, arr):  # O(n)
     return arr
 
 
-# unoptimized merge implementation that uses an additional O(n) space instead of
-# merging in place
-def merge_unoptimized(left, right):  # O(n)
+def merge_unoptimized(left, right):
     merged = []
 
     while left and right:

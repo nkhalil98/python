@@ -6,12 +6,12 @@ Breath First Search (BFS)
 
 from __future__ import annotations
 
+
 from collections import deque
-from ds.tree import TreeNode
+from data_structures.tree import TreeNode
 
 
-# BFS implementation for tree
-def tree_bfs(root: TreeNode, target):  # O(n)
+def tree_bfs(root: TreeNode, target):
     path_queue = deque()
     initial_path = [root]
     path_queue.appendleft(initial_path)
@@ -31,8 +31,7 @@ def tree_bfs(root: TreeNode, target):  # O(n)
     return None
 
 
-# BFS implementation for graph
-def graph_bfs(graph: dict, start, target):  # O(V+E)
+def graph_bfs(graph: dict, start, target):
     path = [start]
     vertex_and_path = (start, path)
     bfs_queue = deque([vertex_and_path])
