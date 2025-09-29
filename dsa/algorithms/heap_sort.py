@@ -2,21 +2,17 @@
 Heap Sort
 """
 
-from ds.heap import MaxHeap, MinHeap
+from data_structures.heap import MaxHeap, MinHeap
 
 
-def heap_sort(arr, method="max"):  # O(nlog(n))
-    methods = {
-        "max": heapsort_max,
-        "min": heapsort_min,
-    }
+def heap_sort(arr, method="max"):
+    methods = {"max": heapsort_max, "min": heapsort_min}
 
     sort_method = methods.get(method, heapsort_max)
     return sort_method(arr)
 
 
-# heapsort implementation using max heap
-def heapsort_max(arr):  # O(nlog(n))
+def heapsort_max(arr):
     sorted_arr = []
     max_heap = MaxHeap()
     for e in arr:
@@ -27,8 +23,7 @@ def heapsort_max(arr):  # O(nlog(n))
     return sorted_arr
 
 
-# heapsort implementation using min heap
-def heapsort_min(arr):  # O(nlog(n))
+def heapsort_min(arr):
     sorted_arr = []
     min_heap = MinHeap()
     for e in arr:

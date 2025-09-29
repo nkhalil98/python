@@ -6,8 +6,7 @@ Radix Sort
 from __future__ import annotations
 
 
-# least-significant-digit (LSD) implementation of radix sort
-def radix_sort(arr):  # O(nk) where k is the number of digits in the largest number
+def radix_sort(arr):
     if not arr:
         return
 

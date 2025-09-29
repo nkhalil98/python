@@ -6,14 +6,14 @@ Depth First Search (DFS)
 
 from __future__ import annotations
 
-from ds.tree import TreeNode
+from data_structures.tree import TreeNode
 
 
-# DFS implementation for tree
-def tree_dfs(root: TreeNode, target, path=None):  # O(n)
+def tree_dfs(root: TreeNode, target, path=None):
     if path is None:
-        path = ()
-    path = path + (root,)
+        path = []
+
+    path.append(root)
 
     if root.val == target:
         return path
@@ -27,8 +27,7 @@ def tree_dfs(root: TreeNode, target, path=None):  # O(n)
     return None
 
 
-# DFS implementation for graph
-def graph_dfs(graph: dict, start, target, visited=None):  # O(V+E)
+def graph_dfs(graph: dict, start, target, visited=None):
     if visited is None:
         visited = []
 
