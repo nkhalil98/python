@@ -2,7 +2,7 @@ import time
 import sys
 
 
-def collatz(n):
+def collatz(n: int) -> int:
     if n % 2 == 0:
         n = n // 2
     else:
