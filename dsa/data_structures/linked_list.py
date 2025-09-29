@@ -8,32 +8,56 @@ from __future__ import annotations
 
 
 class Node:
-    def __init__(self, val=None, next=None, prev=None):  # O(1)
+    def __init__(self, val=None, next=None, prev=None):
         self.val = val
         self.next = next
         self.prev = prev
 
 
 class LinkedList:
-    def __init__(self):  # O(1)
+    def __init__(self):
         self.head = None
         self.size = 0
 
-    def __len__(self):  # O(1)
+    def __len__(self):
         return self.size
 
-    def __iter__(self):  # O(n)
-        node = self.head
-        while node:
-            yield node.val
-            node = node.next
+    def __iter__(self):
+        ptr = self.head
+        while ptr:
+            yield ptr.val
+            ptr = ptr.next
 
-    def insert_at_beginning(self, val):  # O(1)
+    def __str__(self):
+        if not self.head:
+            return "Empty Linked List"
+
+        linked_list = []
+        ptr = self.head
+        while ptr:
+            linked_list.append(str(ptr.val))
+            ptr = ptr.next
+        return " => ".join(linked_list)
+
+    def __getitem__(self, index):
+        if index < 0 or index >= len(self):
+            raise IndexError()
+
+        counter = 0
+        ptr = self.head
+
+        while ptr:
+            if counter == index:
+                return ptr.val
+            ptr = ptr.next
+            counter += 1
+
+    def _insert_at_beginning(self, val):
         node = Node(val, self.head)
         self.head = node
         self.size += 1
 
-    def insert_at_end(self, val):  # O(n)
+    def _insert_at_end(self, val):
         node = Node(val)
         ptr = self.head
 
@@ -47,12 +71,18 @@ class LinkedList:
         ptr.next = node
         self.size += 1
 
-    def insert(self, index, val):  # O(n)
+    append = _insert_at_end
+
+    def insert(self, index, val):
         if index < 0 or index > len(self):
             raise IndexError()
 
         if index == 0:
-            self.insert_at_beginning(val)
+            self._insert_at_beginning(val)
+            return
+
+        if index == len(self):
+            self._insert_at_end(val)
             return
 
         counter = 0
@@ -67,59 +97,94 @@ class LinkedList:
             ptr = ptr.next
             counter += 1
 
-    def remove(self, index):  # O(n)
+    def pop(self, index=None):
+        if index is None:
+            index = self.size - 1
+
         if index < 0 or index >= len(self):
             raise IndexError()
 
         if index == 0:
+            val = self.head.val
             self.head = self.head.next
             self.size -= 1
-            return
+            return val
 
         counter = 0
         ptr = self.head
 
         while ptr:
             if counter == (index - 1):
+                val = ptr.next.val
                 ptr.next = ptr.next.next
                 self.size -= 1
-                break
+                return val
             ptr = ptr.next
             counter += 1
 
-    def build(self, data):  # O(n)
+    def remove(self, val):
+        if self.head is None:
+            return
+
+        if self.head.val == val:
+            self.head = self.head.next
+            self.size -= 1
+            return
+
+        ptr = self.head
+        while ptr.next:
+            if ptr.next.val == val:
+                ptr.next = ptr.next.next
+                self.size -= 1
+                return
+            ptr = ptr.next
+
+    def build(self, data):
         self.head = None
         for item in data:
-            self.insert_at_end(item)
+            self._insert_at_end(item)
 
-    def print(self):  # O(n)
+
+# FIXME
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
+
+    def __len__(self):
+        return self.size
+
+    def __iter__(self):
+        node = self.head
+        while node:
+            yield node.val
+            node = node.next
+
+    def __str__(self):
         if not self.head:
-            print("Linked list is empty")
-            return
+            return "Empty Doubly Linked List"
 
         linked_list = []
         ptr = self.head
         while ptr:
             linked_list.append(str(ptr.val))
             ptr = ptr.next
-        print(" --> ".join(linked_list))
+        return " <=> ".join(linked_list)
 
+    def print_backwards(self):
+        if not self.head:
+            print("Linked list is empty")
+            return
 
-class DoublyLinkedList:
-    def __init__(self):  # O(1)
-        self.head = None
-        self.size = 0
+        linked_list = []
+        ptr = self.get_last_node()
+        while ptr:
+            linked_list.append(str(ptr.val))
+            ptr = ptr.prev
+        print(" <=> ".join(linked_list))
 
-    def __len__(self):  # O(1)
-        return self.size
-
-    def __iter__(self):  # O(n)
-        node = self.head
-        while node:
-            yield node.val
-            node = node.next
-
-    def insert_at_beginning(self, val):  # O(1)
+    def insert_at_beginning(self, val):
         if not self.head:
             node = Node(val, self.head)
             self.head = node
@@ -129,7 +194,7 @@ class DoublyLinkedList:
             self.head = node
         self.size += 1
 
-    def insert_at_end(self, val):  # O(n)
+    def insert_at_end(self, val):
         ptr = self.head
 
         if not ptr:
@@ -143,7 +208,7 @@ class DoublyLinkedList:
         ptr.next = Node(val, next=None, prev=ptr)
         self.size += 1
 
-    def insert(self, index, val):  # O(n)
+    def insert(self, index, val):
         if index < 0 or index > len(self):
             raise IndexError()
 
@@ -165,7 +230,7 @@ class DoublyLinkedList:
             ptr = ptr.next
             counter += 1
 
-    def remove(self, index):  # O(n)
+    def remove(self, index):
         if index < 0 or index >= len(self):
             raise IndexError()
 
@@ -189,46 +254,13 @@ class DoublyLinkedList:
             ptr = ptr.next
             counter += 1
 
-    def build(self, data):  # O(n)
+    def build(self, data):
         self.head = None
         for item in data:
             self.insert_at_end(item)
 
-    def get_last_node(self):  # O(n)
+    def get_last_node(self):
         ptr = self.head
         while ptr.next:
             ptr = ptr.next
         return ptr
-
-    def print(self):  # O(n)
-        if not self.head:
-            print("Linked list is empty")
-            return
-
-        linked_list = []
-        ptr = self.head
-        while ptr:
-            linked_list.append(str(ptr.val))
-            ptr = ptr.next
-        print(" <--> ".join(linked_list))
-
-    def print_backwards(self):  # O(n)
-        if not self.head:
-            print("Linked list is empty")
-            return
-
-        linked_list = []
-        ptr = self.get_last_node()
-        while ptr:
-            linked_list.append(str(ptr.val))
-            ptr = ptr.prev
-        print(" <--> ".join(linked_list))
-
-
-# TODO
-class CircularLinkedList:
-    pass
-
-
-class CircularDoublyLinkedList:
-    pass

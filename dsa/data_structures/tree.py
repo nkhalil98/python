@@ -6,12 +6,12 @@ from __future__ import annotations
 
 
 class TreeNode:
-    def __init__(self, val):  # O(1)
+    def __init__(self, val):
         self.val = val
         self.parent = None
         self.children = []
 
-    def get_level(self):  # O(n)
+    def get_level(self):
         level = 0
         p = self.parent
         while p:
@@ -19,17 +19,24 @@ class TreeNode:
             p = p.parent
         return level
 
-    def add_child(self, child: TreeNode):  # O(1)
-        child.parent = self
+    def add_child(self, child: TreeNode):
         self.children.append(child)
+        child.parent = self
 
-    def remove_child(self, child):  # O(n)
+    def remove_child(self, child: TreeNode):
         self.children.remove(child)
+        child.parent = None
 
-    def __str__(self):  # O(n)
+    def is_root(self):
+        return self.parent is None
+
+    def is_leaf(self):
+        return len(self.children) == 0
+
+    def __str__(self):
         lines = []
 
-        def traverse(node):
+        def traverse(node: TreeNode):
             indent = " " * node.get_level() * 2
             prefix = indent + "└── " if node.parent else ""
             result = f"{prefix}{node.val}".rjust(3)

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 class MinHeap:
     def __init__(self):
-        self.heap_list = [None]
+        self.arr = [None]
         self.count = 0
 
     def __len__(self):
@@ -28,17 +28,17 @@ class MinHeap:
         return self.left_child_idx(idx) <= self.count
 
     def add(self, element):
-        self.heap_list.append(element)
+        self.arr.append(element)
         self.count += 1
         self.heapify_up()
 
     def heapify_up(self):
         idx = self.count
         while self.parent_idx(idx) > 0:
-            if self.heap_list[self.parent_idx(idx)] > self.heap_list[idx]:
-                self.heap_list[self.parent_idx(idx)], self.heap_list[idx] = (
-                    self.heap_list[idx],
-                    self.heap_list[self.parent_idx(idx)],
+            if self.arr[self.parent_idx(idx)] > self.arr[idx]:
+                self.arr[self.parent_idx(idx)], self.arr[idx] = (
+                    self.arr[idx],
+                    self.arr[self.parent_idx(idx)],
                 )
             idx = self.parent_idx(idx)
 
@@ -46,19 +46,19 @@ class MinHeap:
         idx = 1
         while self.child_present(idx):
             smaller_child_idx = self.get_smaller_child_idx(idx)
-            if self.heap_list[idx] > self.heap_list[smaller_child_idx]:
-                self.heap_list[smaller_child_idx], self.heap_list[idx] = (
-                    self.heap_list[idx],
-                    self.heap_list[smaller_child_idx],
+            if self.arr[idx] > self.arr[smaller_child_idx]:
+                self.arr[smaller_child_idx], self.arr[idx] = (
+                    self.arr[idx],
+                    self.arr[smaller_child_idx],
                 )
             idx = smaller_child_idx
 
     def retrieve_min(self):
         if self.count == 0:
             return None
-        min_value = self.heap_list[1]
-        self.heap_list[1] = self.heap_list[self.count]
-        self.heap_list.pop()
+        min_value = self.arr[1]
+        self.arr[1] = self.arr[self.count]
+        self.arr.pop()
         self.count -= 1
         self.heapify_down()
         return min_value
@@ -67,8 +67,8 @@ class MinHeap:
         if self.right_child_idx(idx) > self.count:
             return self.left_child_idx(idx)
         else:
-            left_child = self.heap_list[self.left_child_idx(idx)]
-            right_child = self.heap_list[self.right_child_idx(idx)]
+            left_child = self.arr[self.left_child_idx(idx)]
+            right_child = self.arr[self.right_child_idx(idx)]
             if left_child < right_child:
                 return self.left_child_idx(idx)
             else:
@@ -77,7 +77,7 @@ class MinHeap:
 
 class MaxHeap:
     def __init__(self):
-        self.heap_list = [None]
+        self.arr = [None]
         self.count = 0
 
     def __len__(self):
@@ -96,37 +96,37 @@ class MaxHeap:
         return self.left_child_idx(idx) <= self.count
 
     def add(self, element):
-        self.heap_list.append(element)
+        self.arr.append(element)
         self.count += 1
         self.heapify_up()
 
     def heapify_up(self):
         idx = self.count
         while self.parent_idx(idx) > 0:
-            child = self.heap_list[idx]
-            parent = self.heap_list[self.parent_idx(idx)]
+            child = self.arr[idx]
+            parent = self.arr[self.parent_idx(idx)]
             if parent < child:
-                self.heap_list[idx] = parent
-                self.heap_list[self.parent_idx(idx)] = child
+                self.arr[idx] = parent
+                self.arr[self.parent_idx(idx)] = child
             idx = self.parent_idx(idx)
 
     def heapify_down(self):
         idx = 1
         while self.child_present(idx):
             larger_child_idx = self.get_larger_child_idx(idx)
-            child = self.heap_list[larger_child_idx]
-            parent = self.heap_list[idx]
+            child = self.arr[larger_child_idx]
+            parent = self.arr[idx]
             if parent < child:
-                self.heap_list[idx] = child
-                self.heap_list[larger_child_idx] = parent
+                self.arr[idx] = child
+                self.arr[larger_child_idx] = parent
             idx = larger_child_idx
 
     def retrieve_max(self):
         if self.count == 0:
             return None
-        max_value = self.heap_list[1]
-        self.heap_list[1] = self.heap_list[self.count]
-        self.heap_list.pop()
+        max_value = self.arr[1]
+        self.arr[1] = self.arr[self.count]
+        self.arr.pop()
         self.count -= 1
         self.heapify_down()
         return max_value
@@ -135,8 +135,8 @@ class MaxHeap:
         if self.right_child_idx(idx) > self.count:
             return self.left_child_idx(idx)
         else:
-            left_child = self.heap_list[self.left_child_idx(idx)]
-            right_child = self.heap_list[self.right_child_idx(idx)]
+            left_child = self.arr[self.left_child_idx(idx)]
+            right_child = self.arr[self.right_child_idx(idx)]
             if left_child > right_child:
                 return self.left_child_idx(idx)
             else:
