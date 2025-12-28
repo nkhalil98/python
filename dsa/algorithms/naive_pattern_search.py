@@ -23,3 +23,21 @@ def pattern_search(text, pattern):
             return i
 
     return -1
+
+
+def pattern_search_chunk(text, pattern):
+    if not text or not pattern:
+        return -1
+
+    n = len(text)
+    m = len(pattern)
+
+    if n < m:
+        return -1
+
+    for i in range(n - m + 1):
+        chunk = text[i : i + m]
+        if chunk == pattern:
+            return i
+
+    return -1
