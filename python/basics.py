@@ -1,15 +1,18 @@
 # printing
 # --------
+
 print("Hello, World!")
 
 
 # comments
 # --------
+
 # this is a comment
 
 
 # variables
 # ---------
+
 a = 1  # variable assignment with the assignment operator (=)
 a = "hello"  # python is dynamically typed (variable type can change)
 a, b = 1, 2  # multiple assignment
@@ -20,6 +23,7 @@ CONST = 3  # python does not have true constants (by convention, constants are w
 
 # user input
 # ----------
+
 prompt = "Enter your name: "
 name = input(prompt)
 print("Hello, " + name)
@@ -29,9 +33,16 @@ print("Hello, " + name)
 # -------------------
 
 ## native data types
+
+### numeric types
 a = 1  # int (integer)
-b = 2.3  # float (floating-point number)
+b = 2.0  # float (floating-point number)
+c = 1 + 2j  # complex number
+
+### boolean type
 x = True  # bool (Boolean - True or False)
+
+### NoneType
 n = None  # NoneType
 
 ## sequence data types
@@ -39,22 +50,22 @@ my_str = "hello"  # str (string - immutable sequence of characters)
 my_list = [1, 2, 3, "foo", [4, 5]]  # list (dynamic array of elements)
 my_tuple = (1, 2, 3)  # tuple (immutable sequence of elements)
 
-## sequence operations
+### sequence operations
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-### length
+#### length
 n = len(nums)  # length of the sequence
 
-### indexing (0-based)
+#### indexing (0-based)
 first = nums[0]  # first element
 last = nums[-1]  # can use negative indexing to access elements from the end
 
-### slicing [start:end:step]
+#### slicing [start:end:step]
 middle = nums[4:7]  # start index is inclusive, end index is exclusive
 every_other = nums[::2]  # slicing with step
 reversed = nums[::-1]  # reverse the list (negative step)
 
-### concatenation and repetition
+#### concatenation and repetition
 more_nums = nums + [11, 12, 13]  # concatenate two lists
 repeated = nums * 2  # repeat the list
 
@@ -66,15 +77,16 @@ my_dict["city"] = "Boston"  # add a new key-value pair
 ## set data types
 my_set = {1, 2, 3}  # set (unordered collection of unique elements)
 
-## type casting
-to_str = str(1)  # int to str
-to_int = int("1")  # str to int
-
 ## type checking
 # everything in python is an object and each object has a type
 a = 1
 print(type(a))  # int
 print(isinstance(a, int))  # True
+
+## type casting
+to_str = str(1)  # int to str
+to_int = int("1")  # str to int
+to_float = float("2.3")  # str to float
 
 
 # operators
@@ -104,7 +116,7 @@ not a  # not
 
 ## assignment
 a = 1
-a += 1  # increment
+a += 1  # increment (same as a = a + 1)
 a -= 1  # decrement
 
 ## membership
@@ -140,7 +152,7 @@ else:
     print("a is negative")
 # python does not require an else block at the end of an if-elif chain
 
-### short-circuiting and multiple if statements
+### short-circuiting vs. multiple if statements
 a = 200
 
 if a > 100:
@@ -149,7 +161,7 @@ elif a > 50:
     print("Greater than 50")
 elif a > 0:
     print("Positive")
-# prints only "Greater than 100" and skips the rest
+# prints only "Greater than 100" and skips the rest (one code block)
 
 if a > 100:
     print("Greater than 100")
@@ -157,8 +169,8 @@ if a > 50:
     print("Greater than 50")
 if a > 0:
     print("Positive")
-# prints all three statements because each if is evaluated independently
-
+# prints all three statements because each if is evaluated independently (three
+# code blocks)
 
 ## loops
 
@@ -172,6 +184,10 @@ for i in range(len(L)):  # for i in range(n)
 ### element-based iteration
 for element in L:  # for element in iterable
     print(element)
+
+### using enumerate to get index and value
+for index, value in enumerate(L):
+    print(index, value)
 
 ### while loops
 
@@ -227,7 +243,7 @@ greet()  # function call
 
 ## function arguments
 def add(x, y):  # positional arguments only
-    return x + y
+    return x + y  # return value
 
 
 def add2(x, y, z=0):  # keyword argument with a default value
@@ -284,11 +300,14 @@ parse_id(id=0, name="Nabil", age=26)
 ### reading the entire file
 f = open("filename.txt")
 content = f.read()
-lines = content.splitlines()
-for line in lines:
-    print(line)
 f.close()  # close the file to free up resources
 
+### reading line by line
+f = open("filename.txt")
+lines = f.readlines()
+for line in lines:
+    print(line)
+f.close()
 
 ### using with statement (context manager)
 with open("filename.txt") as f:
@@ -300,7 +319,7 @@ with open("filename.txt") as f:
 ##  writing
 
 ### writing to a file
-f = open("filename2.txt", "w")
+f = open("filename2.txt", "w")  # open file in write mode
 f.write("Hi")
 f.close()
 
@@ -309,13 +328,14 @@ with open("filename2.txt", "w") as f:
     f.write("Hello")
 
 ### appending to a file
-with open("filename2.txt", "a") as f:
+with open("filename2.txt", "a") as f:  # open file in append mode
     f.write(" World\n")
 
 
 # error handling
 # --------------
-# Some common errors are: SyntaxError, NameError, TypeError, IndexError,
+
+# Some common errors in Python: SyntaxError, NameError, TypeError, IndexError,
 # IndentationError, KeyError, ValueError, ZeroDivisionError, FileNotFoundError
 
 ## exceptions
