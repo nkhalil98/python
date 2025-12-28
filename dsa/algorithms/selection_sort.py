@@ -14,7 +14,7 @@ def selection_sort(arr):
     for i in range(n - 1):
         min_index = _find_min(arr, i)
         if i != min_index:
-            arr[i], arr[min_index] = arr[min_index], arr[i]  # swap
+            arr[i], arr[min_index] = arr[min_index], arr[i]
 
 
 def selection_sort_unoptimized(arr):

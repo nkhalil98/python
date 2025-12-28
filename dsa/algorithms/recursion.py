@@ -24,6 +24,24 @@ def sum_(n: int) -> int:
     return n + sum_(n - 1)
 
 
+# simulate recursion using a stack
+@non_negative
+def sum2_(n: int) -> int:
+    result = 0
+    call_stack = []
+
+    while n > 0:
+        stack_frame = {"n": n, "result": result}
+        call_stack.append(stack_frame)
+        n -= 1
+
+    while call_stack:
+        context = call_stack.pop()
+        result += context["n"]
+
+    return result
+
+
 @non_negative
 def prod(n: int) -> int:
     if n == 0:
