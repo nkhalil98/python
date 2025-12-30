@@ -8,7 +8,7 @@ tup = (1, 2, 3)
 tup2 = 4, 5, 6  # tuples do not require parentheses
 t = 1,  #  single element tuple requires a trailing comma # fmt: skip
 empty = ()  # initialize an empty tuple
-empty = tuple()  # another way
+empty = tuple()  # initialize an empty tuple
 
 
 # tuples are sequences
