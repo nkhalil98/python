@@ -6,22 +6,36 @@ import itertools
 # ---------
 
 ## range based
-for i in range(5):  # for i in range(n)
-    print(i)
+
+### simple range
+for i in range(5):
+    print(i)  # prints 0, 1, 2, 3, 4
+
+### range with start and stop
+for i in range(2, 5):
+    print(i)  # prints 2, 3, 4
+
+### range with start, stop, step
+for i in range(2, 10, 2):
+    print(i)  # prints 2, 4, 6, 8
 
 ## iterable based
 L = [1, 2, 3, 4, 5]
 n = len(L)
 
-# index based
+### index based
 for i in range(n):  # for i in range(n)
     print(L[i])
 
-# item based
+### reversed index based
+for i in range(n - 1, -1, -1):
+    print(L[i])
+
+### item based
 for item in L:  # for item in iterable
     print(item)
 
-# enumerate
+## enumerate
 for index, item in enumerate(L):  # for index, item in enumerate(iterable)
     print(f"Index: {index}, Item: {item}")
 
@@ -61,6 +75,9 @@ while L:
     print(L.pop())
 
 ## infinite loops
+# infinite loops happen when the loop condition never becomes False or if there
+# is no break statement inside the loop to exit it
+
 # while True:
 #     print("This will run forever unless interrupted")
 
@@ -160,7 +177,7 @@ for num in numbers:
 else:  # executed if the loop completes without a break
     print("No odd numbers found")
 
-# while-else clause
+## while-else clause
 count = 0
 max_count = 5
 while count < max_count:
