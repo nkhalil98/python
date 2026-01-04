@@ -19,12 +19,17 @@ a = 1  # statement (does something)
 ## variable assignment
 # assignment creates a new reference to an object in memory
 a = 1  # variable assignment (lhs: variable name -> assignment operator (=) -> rhs: expression or value)
+a = 2  # variables can be reassigned to new values
+a = a + 1  # a variable can also be assigned to an expression involving itself
 CONST = 3  # python does not have constants (use uppercase for naming constants by convention)
 CONST = 4  # reassigning constant is allowed but not recommended
 
 ## dynamic typing
-a = "hello"  # python is dynamically typed
-# python infers types at runtime and variables can change type at runtime
+# variables can be reassigned to objects of different types and python infers
+# types at runtime
+a = 1
+a = "hello"
+
 
 # statically typed languages (like C) require variable declaration with its type
 # (like int a;) before assignment
@@ -134,9 +139,8 @@ is_truthy = bool(1)  # can even cast to bool
 # empty values (0, "", [], {}, None, etc.) are falsy; everything else is truthy
 
 
-# python built-in data types: numeric - boolean - NoneType - sequence - mapping
-# - set - binary - ellipsis - Exceptions
-# -----------------------------------------------------------------------------
+# python built-in data types
+# --------------------------
 
 ## object
 obj = object()  # every object in python derives from the (featureless) object class
@@ -170,12 +174,12 @@ ss = {1, 2, 3}  # set
 fs = frozenset([1, 2, 3])  # frozenset
 
 
-# function
+## function
 def foo():  # function object
     pass
 
 
-# type
+## type
 class MyClass:  # type object
     pass
 
@@ -188,35 +192,41 @@ type(t)  # type object
 e = BaseException()  # BaseException
 
 ## binary
-h = b"hello"  # bytes
-i = bytearray(b"hello")  # bytearray: mutable bytes
-j = memoryview(b"hello")  # memoryview: memory view of bytes
+h = b"hello"  # bytes (immutable sequence of bytes)
+i = bytearray(b"hello")  # bytearray (mutable sequence of bytes)
+j = memoryview(b"hello")  # memoryview (memory view of a bytes object)
+
+my_bytes = bytes(10)
+my_byte_array = bytearray(10)
+my_mem_view = memoryview(bytes(10))
 
 ## ellipsis
 e = Ellipsis  # Ellipsis object
 e2 = ...  # Ellipsis literal
 
-
-# zip
+## zip
 z = zip([1, 2, 3], ["a", "b", "c"])  # zip object
 
-# enumerate
+## enumerate
 en = enumerate(["a", "b", "c"])  # enumerate object
 
-# generator
+## iterator
+it = iter([1, 2, 3])  # iterator object
+
+## generator
 gen = (x * x for x in range(5))  # generator object
 
-# map and filter
+## map and filter
 m = map(lambda x: x * x, range(5))  # map object
 f = filter(lambda x: x % 2 == 0, range(10))  # filter object
 
 
-# coroutine
+## coroutine
 async def coro():
     pass
 
 
-coro_obj = coro()  # coroutine objectc
+coro_obj = coro()  # coroutine object
 
 
 # objects
@@ -224,6 +234,3 @@ coro_obj = coro()  # coroutine objectc
 
 # python data model: everything in python is an object and every object has a
 # type
-
-
-
