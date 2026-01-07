@@ -82,6 +82,26 @@ while L:
 #     print("This will run forever unless interrupted")
 
 
+# loop control statements
+# -----------------------
+
+## break statement
+for i in range(10):
+    if i == 5:
+        break  # exit the loop when i is 5
+    print(i)
+
+## continue statement
+for i in range(10):
+    if i % 2 == 0:
+        continue  # skip even numbers
+    print(i)  # prints only odd numbers
+
+## pass statement
+for _ in range(5):
+    pass  # placeholder for future code
+
+
 # nested loops
 # ____________
 
@@ -98,28 +118,6 @@ matrix = [
 for row in matrix:
     for element in row:
         print(element)
-
-
-# loop control statements
-# -----------------------
-
-## break statement
-for i in range(10):
-    if i == 5:
-        break  # exit the loop when i is 5
-    print(i)
-
-
-## continue statement
-for i in range(10):
-    if i % 2 == 0:
-        continue  # skip even numbers
-    print(i)  # prints only odd numbers
-
-
-## pass statement
-for _ in range(5):
-    pass  # placeholder for future code
 
 
 # comprehensions

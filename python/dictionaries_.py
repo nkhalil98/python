@@ -45,17 +45,22 @@ has_x = "x" in my_dict  # check if key exists
 # ---------------------------
 
 ## iterte over keys
-for key in my_dict:
-    print(key, my_dict[key])
-
 for key in my_dict.keys():
-    print(key, my_dict[key])
+    print(key)
+
+## or simply
+for key in my_dict:
+    print(key)
 
 ## iterate over values
 for value in my_dict.values():
     print(value)
 
 ## iterate over items
+for key in my_dict:
+    print(key, my_dict[key])
+
+## more idiomatic
 for key, value in my_dict.items():
     print(key, value)
 
