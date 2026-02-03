@@ -1,16 +1,11 @@
 import datetime as dt
 import re
 import string
-
-
 from collections import UserString
 
 
 # TODO: nested f-strings
-# TODO: t-strings (new)
-# TODO: regex (search - sub - findall - match - fullmatch - compile)
-# TODO: parsing datatime strings
-
+# TODO: t-strings (new in Python 3.14)
 
 # string creation
 # ---------------
@@ -68,7 +63,7 @@ dessert = fruit + " split"
 ## repetition
 doubled = fruit * 2
 
-## membership testing
+## membership (in operator)
 has_a = "a" in fruit  # True
 has_z = "z" in fruit  # False
 
@@ -160,10 +155,9 @@ print(fruit)
 # -----------------
 
 # lexicographical comparison (based on Unicode code points)
-"a" > "b"  # False
-"a" < "b"  # True
+"b" > "a"  # False
 "ab" > "aa"  # True
-"abc" < "abcd"  # True
+"abc" > "abcd"  # False
 
 
 # raw strings and bytes
@@ -181,6 +175,7 @@ print(ascii_value)
 
 ascii_char = chr(65)  # "A"
 print(ascii_char)
+
 
 # !r __repr__ vs !s __str__ vs !a __ascii__
 # -----------------------------------------
@@ -205,3 +200,80 @@ print(f"Default: {obj}")  # uses __str__ if available
 print(f"!s: {obj!s}")  # forces str() -> __str__
 print(f"!r: {obj!r}")  # forces repr() -> __repr__
 print(f"!a: {'Hello\nWorld'!a}")  # forces ascii(), escapes non-ASCII/whitespace
+
+
+# string
+# ------
+
+# commonly used for string constants like ascii letters, digits, punctuation,
+# etc.
+print(string.ascii_lowercase)
+
+s = "!!!Hello, World!?%^&***"
+s = s.strip(string.punctuation)
+print(s)
+
+
+# datetime string parsing
+# -----------------------
+
+dt1_string = "2026-01-11 14:30:00"
+dt2_string = "01/01/2024 2:30 PM"
+dt1 = dt.datetime.strptime(dt1_string, "%Y-%m-%d %H:%M:%S")
+dt2 = dt.datetime.strptime(dt2_string, "%m/%d/%Y %I:%M %p")
+print(type(dt1))
+print(type(dt2))
+
+
+# UserString
+# ----------
+
+
+class WeirdString(UserString):
+    def __init__(self, seq):
+        super().__init__(seq)
+        self.data = self._obfuscate()
+
+    def _obfuscate(self):
+        return "".join([char if ord(char) % 3 == 0 else "*" for char in self.data])
+
+
+weird = WeirdString("Hello, World!")
+print(weird)
+
+
+# regex
+# -----
+
+text = "The rain in Spain stays mainly in Spain. Germany is cold."
+pattern = "Spain|Germany"  # match either Spain or Germany
+pattern2 = "France"
+
+## search
+result = re.search(pattern, text)  # first occurrence
+result2 = re.search(pattern2, text)  # None
+print(result)  # Match object
+print(result.group())  # Spain
+print(result.span())  # (12, 17)
+print(result.string)
+
+## replace
+text = re.sub(pattern, "France", text, count=1)
+print(text)
+
+## compile
+regex = re.compile(r"\b\w{5}\b")  # Pattern object (matches all 5-letter words)
+words = regex.findall(text)
+print(words)  # ['stays', 'Spain']
+
+
+## match (from start) vs fullmatch (entire string)
+good_match_result = re.match(r"The", text)
+bad_match_result = re.match(r"Yesterday", text)
+good_fullmatch_result = re.fullmatch(r"^.*Spain\..*$", text)
+bad_fullmatch_result = re.fullmatch(r"^.*France\..*$", text)
+
+print(good_match_result.string)  # Match object
+print(bad_match_result)  # None
+print(good_fullmatch_result.string)  # Match object
+print(bad_fullmatch_result)  # None
