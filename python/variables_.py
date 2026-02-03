@@ -1,10 +1,5 @@
-import dis
-import inspect
 import keyword
-import sys
 
-
-# TODO: object introspection
 
 # expressions vs statements
 # -------------------------
@@ -16,8 +11,13 @@ a = 1  # statement (does something)
 # variables and types
 # -------------------
 
+# variables are names (identifiers) that reference objects (values in memory)
+
 ## variable assignment
 # assignment creates a new reference to an object in memory
+# "=" is the assignment operator and not an equality operator like in
+# mathematics. Assignment is not the same as equality.
+
 a = 1  # variable assignment (lhs: variable name -> assignment operator (=) -> rhs: expression or value)
 a = 2  # variables can be reassigned to new values
 a = a + 1  # a variable can also be assigned to an expression involving itself
@@ -106,11 +106,17 @@ print(b is bb)  # True; b and bb reference same modified object
 print(keyword.kwlist)
 
 ## shadowing built-ins
+
+# python loads built-in names (like int, str, list, dict, etc.) into the global
+# namespace at startup using the builtins module (see sys.modules['builtins'])
+# or print(dir(__builtins__))
+
 # python built-in functions (like int, str, print, dir, etc.) can be shadowed by
 # variable names but it is not recommended practice
 int = "shadowed"  # shadows built-in int()
 print(int)  # prints "shadowed"
 del int  # delete shadowing variable to restore built-in int()
+print(int("123"))  # prints 123
 
 # variable naming conventions were introduced in PEP 8
 
@@ -129,6 +135,10 @@ print(id(a))  # memory address of object referenced by a
 # the name references the object in memory
 
 ## type checking
+
+# all python objects have types that can be checked at runtime using type() and
+# isinstance()
+
 a = 1
 print(type(a))  # int
 print(isinstance(a, int))  # True
@@ -137,100 +147,3 @@ print(isinstance(a, int))  # True
 a = int("123")  # string to int
 is_truthy = bool(1)  # can even cast to bool
 # empty values (0, "", [], {}, None, etc.) are falsy; everything else is truthy
-
-
-# python built-in data types
-# --------------------------
-
-## object
-obj = object()  # every object in python derives from the (featureless) object class
-print(type(obj))  # <class 'object'>
-
-## numeric
-a = 1  # int
-b = 1.0  # float
-c1 = 1 + 2j  # complex number
-c2 = complex(1, 2)  # complex number
-
-## boolean
-bb = True  # bool
-
-## NoneType
-nn = None  # NoneType
-
-## sequence
-s = "hello"  # str
-arr = [1, 2, 3]  # list
-tup = (1, 2, 3)  # tuple
-
-## range
-rng = range(10)
-
-## mapping
-data = {"key": "value"}  # dict
-
-## set
-ss = {1, 2, 3}  # set
-fs = frozenset([1, 2, 3])  # frozenset
-
-
-## function
-def foo():  # function object
-    pass
-
-
-## type
-class MyClass:  # type object
-    pass
-
-
-t = type(MyClass)  # type object
-type(t)  # type object
-
-
-## exceptions
-e = BaseException()  # BaseException
-
-## binary
-h = b"hello"  # bytes (immutable sequence of bytes)
-i = bytearray(b"hello")  # bytearray (mutable sequence of bytes)
-j = memoryview(b"hello")  # memoryview (memory view of a bytes object)
-
-my_bytes = bytes(10)
-my_byte_array = bytearray(10)
-my_mem_view = memoryview(bytes(10))
-
-## ellipsis
-e = Ellipsis  # Ellipsis object
-e2 = ...  # Ellipsis literal
-
-## zip
-z = zip([1, 2, 3], ["a", "b", "c"])  # zip object
-
-## enumerate
-en = enumerate(["a", "b", "c"])  # enumerate object
-
-## iterator
-it = iter([1, 2, 3])  # iterator object
-
-## generator
-gen = (x * x for x in range(5))  # generator object
-
-## map and filter
-m = map(lambda x: x * x, range(5))  # map object
-f = filter(lambda x: x % 2 == 0, range(10))  # filter object
-
-
-## coroutine
-async def coro():
-    pass
-
-
-coro_obj = coro()  # coroutine object
-
-
-# objects
-# -------
-
-# python data model: everything in python is an object and every object has a
-# type
