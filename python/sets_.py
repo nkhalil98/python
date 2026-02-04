@@ -2,7 +2,7 @@
 # ------------
 set1 = {1, 2, 3}
 set2 = set([3, 4, 5])  # from iterable
-empty = set()  # the only way to initilize an empty set
+empty = set()  # the only way to initialize an empty set
 fset = frozenset({1, 2, 3, 4, 5})  # frozenset (immutable set)
 fset2 = frozenset([6, 7, 8])  # from iterable
 
@@ -24,7 +24,7 @@ s.add(4)
 s.update([5, 6, 7])
 s.remove(7)  # raises KeyError if not found
 s.discard(8)  # does not raise error if not found
-popped = s.pop()  # remove and return an arbitrary element
+popped = s.pop()  # remove and return an arbitrary element (sets are unordered)
 s.clear()  # remove all elements
 
 

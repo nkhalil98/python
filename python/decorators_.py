@@ -71,10 +71,14 @@ def check_type(t: type) -> Callable:
         def wrapper(*args, **kwargs):
             for arg in args:
                 if not isinstance(arg, t):
-                    raise TypeError(f"Positional argument {arg} is not of type {t}")
+                    raise TypeError(
+                        f"Positional argument {arg} is not of type {t} for function {func.__name__}"
+                    )
             for k, v in kwargs.items():
                 if not isinstance(v, t):
-                    raise TypeError(f"Keyword argument {k}={v} is not of type {t}")
+                    raise TypeError(
+                        f"Keyword argument {k}={v} is not of type {t} for function {func.__name__}"
+                    )
             return func(*args, **kwargs)
 
         return wrapper

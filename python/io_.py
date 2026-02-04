@@ -8,7 +8,7 @@ import sqlite3
 from pathlib import Path
 from pprint import pprint
 
-1
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
@@ -167,6 +167,11 @@ p.write_text(data_str)
 ### reading from a file
 data_str = p.read_text()
 data = json.loads(data_str)  # Deserialize JSON string into Python object (dict)
+
+
+### can also read/write directly to/from files
+with open("data.json") as f:
+    data = json.load(f)
 
 
 ### another json example

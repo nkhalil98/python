@@ -1,4 +1,6 @@
 from collections import namedtuple
+from typing import NamedTuple
+from typing import List, Tuple
 
 
 # tuple creation
@@ -62,7 +64,7 @@ x, y = y, x  # swap values
 
 
 ## function multiple return values
-def min_max(nums: list[int]) -> tuple[int, int]:
+def min_max(nums: List[int]) -> Tuple[int, int]:
     return min(nums), max(nums)  # returns a tuple
 
 
@@ -133,3 +135,14 @@ p = Point(10, 20)
 x_coord = p.x
 y_coord = p.y
 # p.x = 30  # AttributeError: can't set attribute (namedtuples are immutable)
+
+
+# using typing.NamedTuple (for type hints and better IDE support)
+class Point3D(NamedTuple):
+    x: int
+    y: int
+    z: int
+
+
+p3d = Point3D(1, 2, 3)
+z_coord = p3d.z  # int

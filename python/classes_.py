@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from math import pi
 
 
 # TODO: mixins
@@ -88,12 +89,12 @@ car2.display_info()
 
 
 class Person:
-    tag = "person"  # class variable/attribute (each instance has its own copy)
+    tag = "person"  # class variable/attribute
 
     def __init__(self, name, age):
         self.name = name
         self.age = age
-        self.id = None  # default value
+        self.id_ = None  # default value
         self._private_id = None  # protected attribute (by convention)
         self.__private_id = None  # private attribute (name mangling)
 
@@ -105,32 +106,46 @@ class Person:
 
     # getter method
     def get_id(self):
-        return self.id
+        return self.id_
 
     # setter method
-    def set_id(self, id):
-        assert isinstance(id, int), "ID must be an integer"
-        self.id = id
+    def set_id(self, id_):
+        assert isinstance(id_, int), "ID must be an integer"
+        self.id_ = id_
 
     def __str__(self):
-        return f"Person(name={self.name}, age={self.age}, id={self.id})"
+        return f"Person(name={self.name}, age={self.age}, id={self.id_})"
 
 
 p = Person("Nabil", 26)
 p.greet()
 
-p.id = 1  # direct access to instance attribute
+p.id_ = 1  # direct access to instance attribute
 p.set_id(2)  # using setter method (good practice)
 print(p.get_id())  # using getter method (good practice)
 
 # Python is not good at enforcing encapsulation, so we can access protected and
 # private attributes directly
 p2 = Person("Ali", 30)  # another object instantiation
-p2.id = 3
-del p2.id  # delete instance attribute
+p2.id_ = 3
+del p2.id_  # delete instance attribute
 p2._private_id = 4  # access protected attribute (not recommended)
 p2._Person__private_id = 5  # can even access the private name-mangled attribute
 p2.nationality = "USA"  # add new instance attribute
+
+# class variables are shared across all instances unless overridden
+
+Person.tag = "human"
+print(p.tag)  # human
+print(p2.tag)  # human
+
+p2.tag = "zombie"  # override class variable for this instance
+print(p2.tag)  # zombie
+
+Person.tag = "person"
+print(p.tag)  # person
+print(p2.tag)  # zombie
+
 
 # hasattr() and getattr()
 print(hasattr(p, "name"))  # True
@@ -143,9 +158,9 @@ print(people)  # printed as a list of references
 for person in people:
     print(person)  # __str__ method is called automatically
 
+
 # OOP concepts (Inheritance, Polymorphism, Abstraction, and Encapsulation)
 # ------------------------------------------------------------------------
-
 
 ## inheritance
 
@@ -229,10 +244,10 @@ class Circle(Shape):
         self.radius = radius
 
     def area(self):
-        return 3.14 * self.radius**2
+        return pi * self.radius**2
 
     def perimeter(self):
-        return 2 * 3.14 * self.radius
+        return 2 * pi * self.radius
 
 
 ## encapsulation with public, protected, and private attributes

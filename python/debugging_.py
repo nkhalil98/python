@@ -3,12 +3,6 @@ import traceback
 import pdb
 
 
-# comments
-# TODO
-# FIXME
-# XXX
-
-
 # debugging with print
 def divide(a, b):
     print(f"Dividing {a} by {b}")  # debug print

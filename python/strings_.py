@@ -270,8 +270,8 @@ print(words)  # ['stays', 'Spain']
 ## match (from start) vs fullmatch (entire string)
 good_match_result = re.match(r"The", text)
 bad_match_result = re.match(r"Yesterday", text)
-good_fullmatch_result = re.fullmatch(r"^.*Spain\..*$", text)
-bad_fullmatch_result = re.fullmatch(r"^.*France\..*$", text)
+good_fullmatch_result = re.fullmatch(r".*Spain\..*", text)
+bad_fullmatch_result = re.fullmatch(r".*France\..*", text)
 
 print(good_match_result.string)  # Match object
 print(bad_match_result)  # None

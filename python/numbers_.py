@@ -34,7 +34,8 @@ q = int()  # another way
 # as per IEEE 754 standard
 x1 = 0.1
 x2 = 0.2
-print(x1 + x2)  # 0.30000000000000004 (floating point error)
+sum_ = x1 + x2
+print(sum_)  # 0.30000000000000004 (floating point error)
 x3 = 1e-3  # scientific notation
 x4 = 1.0e3
 x5 = float(5)
@@ -52,8 +53,8 @@ print(f"Real: {z.real}, Imaginary: {z.imag}")
 # decimal
 # -------
 
-d1 = decimal.Decimal(0.1)
-d2 = decimal.Decimal(0.2)
+d1 = decimal.Decimal("0.1")  # use strings to avoid float precision issues
+d2 = decimal.Decimal("0.2")
 print(d1 + d2)  # 0.3
 
 

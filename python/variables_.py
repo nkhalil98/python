@@ -116,7 +116,7 @@ print(keyword.kwlist)
 int = "shadowed"  # shadows built-in int()
 print(int)  # prints "shadowed"
 del int  # delete shadowing variable to restore built-in int()
-print(int("123"))  # prints 123
+print(int("123"))  # prints 123  # noqa
 
 # variable naming conventions were introduced in PEP 8
 
@@ -141,9 +141,9 @@ print(id(a))  # memory address of object referenced by a
 
 a = 1
 print(type(a))  # int
-print(isinstance(a, int))  # True
+print(isinstance(a, int))  # True  # noqa
 
 ## type casting
-a = int("123")  # string to int
+a = int("123")  # string to int  # noqa
 is_truthy = bool(1)  # can even cast to bool
 # empty values (0, "", [], {}, None, etc.) are falsy; everything else is truthy

@@ -235,4 +235,4 @@ print(my_list.product())  # 120
 
 arr = array.array("i", [1, 2, 3])  # array of signed integers
 arr.append(4)
-arr.append("A")  # TypeError: an integer is required
+# arr.append("A")  # TypeError: an integer is required

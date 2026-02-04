@@ -47,6 +47,7 @@ print(e)  # prints 99
 
 for e in L:
     pass
+
 print(e)  # prints 5
 
 # we can use _ as a throwaway variable for unused loop variables

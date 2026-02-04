@@ -212,7 +212,7 @@ match status:
         print("Forbidden")
     case 404:
         print("Not Found")
-    case default:
+    case _:  # default case
         print("Something went wrong")
 
 
@@ -283,6 +283,7 @@ max_ = a if a > b else b  # similar to max_ = (a > b) ? a : b in other languages
 
 a = 5
 b = 10
+
 if a > b:
     pass  # placeholder for future code
 else:

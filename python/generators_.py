@@ -78,8 +78,8 @@ for i in gen_expr:
 # generators are memory efficient because they generate values one at a time
 # while still remembering their state between values
 
-million_arr = list(range(10_000_000))  # uses a lot of memory to store all values
-print(f"List size: {sys.getsizeof(million_arr)} bytes")
+ten_million_arr = list(range(10_000_000))  # uses a lot of memory to store all values
+print(f"List size: {sys.getsizeof(ten_million_arr)} bytes")
 
 y = (i for i in range(10_000_000))  # uses very little memory
 print(f"Generator size: {sys.getsizeof(y)} bytes")

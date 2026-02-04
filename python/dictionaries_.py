@@ -3,6 +3,7 @@ from collections import defaultdict, OrderedDict, Counter, UserDict, ChainMap
 # TODO: chainmap
 # TODO: userdict example
 
+
 # dictionary creation
 # -------------------
 
@@ -11,7 +12,7 @@ from collections import defaultdict, OrderedDict, Counter, UserDict, ChainMap
 
 # dictionary literal
 my_dict = {"a": 2, "b": 1, "c": 3}
-empty = {}  # initilize an empty dict
+empty = {}  # initialize an empty dict
 empty2 = dict()  # initialize an empty dict
 
 ## accessing, adding, updating, and deleting items
@@ -28,7 +29,8 @@ my_dict = {"a": 2, "b": 1, "c": 3}
 keys_ = list(my_dict.keys())  # list of keys
 vals_ = list(my_dict.values())  # list of values
 items_ = list(my_dict.items())  # list of (key, value) tuples
-z = my_dict.get("z")  # 0  safely get value by key, returns None if key not found
+x = my_dict.get("x")  # safely get value by key, returns None if key not found
+y = my_dict.get("y", 0)  # set default value of 0 if key not found
 a = my_dict.pop("a")  # remove and return the value of "a"
 my_dict.clear()  # clear all items
 my_dict2 = {"e": 5}
