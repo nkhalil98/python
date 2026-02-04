@@ -1,4 +1,4 @@
-# Python Resrouces
+# Python Resources
 
 ## Books
 
