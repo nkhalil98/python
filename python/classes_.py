@@ -5,6 +5,10 @@ from math import pi
 
 # TODO: mixins
 # TODO: @classmethods vs @staticmethods vs instance methods
+# TODO: __slots__ for memory optimization
+# TODO: class.__dict__ vs instance.__dict__
+# TODO: metaprogramming with type(), __new__, and metaclasses
+# TODO: Python descriptors
 
 
 # class definition and instantiation
@@ -68,16 +72,17 @@ car1.display_info()
 
 ### without __init__
 class Car2:
-    # still can be defined without __init__ and accessed using self
-    make = ""
-    model = ""
-    year = 0
+    make: str
+    model: str
+    year: int
 
     def display_info(self):
         print(f"Car Information: {self.year} {self.make} {self.model}")
 
 
 car2 = Car2()
+
+# without __init__, we have to set attributes manually for each instance
 car2.make = "Honda"
 car2.model = "Civic"
 car2.year = 2023
