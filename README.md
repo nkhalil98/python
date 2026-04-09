@@ -1,5 +1,3 @@
 # Python 🐍
 
-## Resources
-
-- [Grokking Algorithms](https://www.manning.com/books/grokking-algorithms-second-edition)
+Python projects and scripts I write here and there
